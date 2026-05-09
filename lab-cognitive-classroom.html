@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognitive Classroom & Smart Learning Hub | Rathinam Global University</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0f1a;
+      --card-bg: rgba(255,255,255,0.03);
+      --text: #ffffff;
+      --text-muted: rgba(255,255,255,0.7);
+      --border: rgba(255,255,255,0.1);
+      --border-light: rgba(255,255,255,0.06);
+      --muted: rgba(255,255,255,0.5);
+      --navy2: rgba(255,255,255,0.03);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'DM Sans', sans-serif; 
+      background: var(--bg); 
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    
+    .lab-header { 
+      padding: 4rem 0; 
+      background: linear-gradient(135deg, rgba(100,100,100,0.1), transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .lab-icon-large { font-size: 4rem; margin-bottom: 1rem; }
+    .lab-title { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 2.5rem; 
+      margin-bottom: 0.5rem;
+    }
+    .lab-mode { 
+      color: var(--muted); 
+      font-weight: 600; 
+      font-size: 1.1rem;
+    }
+    
+    .lab-content { padding: 3rem 0; }
+    .lab-section { 
+      margin-bottom: 3rem; 
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+    }
+    .lab-section h2 { 
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .lab-section h2::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: var(--muted);
+      border-radius: 2px;
+    }
+    .lab-section p { color: var(--text-muted); line-height: 1.8; }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--navy2);
+      border-radius: 8px;
+    }
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    
+    .lab-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .lab-list li {
+      padding: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+    .lab-list li:last-child { border-bottom: none; }
+    .lab-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    
+    .partners-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .partner-tag {
+      padding: 8px 16px;
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 12px 24px;
+      background: var(--muted);
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 2rem;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { opacity: 0.9; }
+    
+    .lab-footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header class="lab-header">
+    <div class="container">
+      <div class="lab-icon-large">🎓</div>
+      <h1 class="lab-title">Cognitive Classroom & Smart Learning Hub</h1>
+      <div class="lab-mode">📡 Physical + Hybrid — Streaming Enabled</div>
+    </div>
+  </header>
+
+  <main class="lab-content">
+    <div class="container">
+      <section class="lab-section">
+        <h2>Lab Overview</h2>
+        <p>Next-generation smart classroom with AI-powered adaptive learning, eye-tracking analytics, and hybrid streaming capabilities. Designed for flipped classroom models and personalized education.</p>
+      </section>
+
+      <section class="lab-section">
+        <h2>Key Features</h2>
+        <div class="features-grid">
+          <div class="feature-item"><div class="feature-icon">✓</div><span>AI-powered Adaptive Learning</span></div>
+          <div class="feature-item"><div class="feature-icon">✓</div><span>Eye-tracking Engagement Monitors</span></div>
+          <div class="feature-item"><div class="feature-icon">✓</div><span>Peer Collaboration Pods</span></div>
+          <div class="feature-item"><div class="feature-icon">✓</div><span>Recording Studio</span></div>
+          <div class="feature-item"><div class="feature-icon">✓</div><span>Hybrid Streaming Infrastructure</span></div>
+          <div class="feature-item"><div class="feature-icon">✓</div><span>Smart Whiteboard Systems</span></div>
+        </div>
+      </section>
+
+      <section class="lab-section">
+        <h2>Equipment & Infrastructure</h2>
+        <ul class="lab-list">
+          <li>AI tutoring platforms</li>
+          <li>Tobii eye-trackers</li>
+          <li>Zoom/Teams Rooms</li>
+          <li>OBS Studio setups</li>
+          <li>Interactive displays</li>
+          <li>Wireless presentation systems</li>
+        </ul>
+      </section>
+
+      <section class="lab-section">
+        <h2>Associated Courses</h2>
+        <ul class="lab-list">
+          <li>Educational Technology</li>
+          <li>Instructional Design</li>
+          <li>Hybrid Learning Systems</li>
+          <li>AI in Education</li>
+        </ul>
+      </section>
+
+      <section class="lab-section">
+        <h2>Industry Partners</h2>
+        <div class="partners-grid">
+          <span class="partner-tag">Zoom</span>
+          <span class="partner-tag">Microsoft Teams</span>
+          <span class="partner-tag">Canvas LMS</span>
+          <span class="partner-tag">Moodle</span>
+        </div>
+      </section>
+
+      <a href="index.html#labs" class="back-btn">← Back to Labs</a>
+    </div>
+  </main>
+
+  <footer class="lab-footer">
+    <div class="container">
+      <p>&copy; 2025 Rathinam Global University. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

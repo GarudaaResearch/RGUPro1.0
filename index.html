@@ -375,7 +375,13 @@
 
   /* ─── LABS ─── */
   #labs { padding: 6rem 0; }
-  .labs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  .labs-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 1rem; 
+    margin-top: 3rem;
+  }
+  .labs-grid a.lab-card { cursor: pointer; }
   .lab-card {
     background: var(--card-bg);
     border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
@@ -383,11 +389,17 @@
     padding: 1.5rem;
     transition: all 0.25s;
     position: relative; overflow: hidden;
+    cursor: pointer;
   }
-  .lab-card:hover { border-color: var(--border); }
+  .lab-card:hover { 
+    border-color: var(--border); 
+    transform: translateY(-4px); 
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08); 
+  }
   .lab-card::after {
     content: '';
     position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    pointer-events: none;
   }
   .lab-icon { font-size: 2rem; margin-bottom: 0.8rem; }
   .lab-card h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; }
@@ -480,6 +492,15 @@
   /* ─── ANIMATE ON SCROLL ─── */
   .aos { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
   .aos.visible { opacity: 1; transform: translateY(0); }
+  
+  /* Lab cards always clickable */
+  .lab-card, .lab-card.aos, .lab-card.aos.visible { 
+    cursor: pointer !important; 
+    pointer-events: auto !important; 
+    position: relative; 
+    z-index: 10;
+  }
+  .lab-card * { pointer-events: none !important; }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
@@ -512,6 +533,258 @@
     width: 100%;
     height: auto;
     display: block;
+  }
+  /* ─── PROGRAMME DETAILS MODAL ─── */
+  .prog-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .prog-modal-overlay.active { display: flex; }
+  .prog-modal {
+    background: var(--card-bg);
+    border-radius: 16px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlide 0.3s ease;
+    border: 1px solid var(--border);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  }
+  @keyframes modalSlide {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .prog-modal-header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .prog-modal-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--navy2);
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .prog-modal-close:hover {
+    background: var(--gold); color: #fff; border-color: var(--gold);
+  }
+  .prog-modal-level {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+  .prog-modal-title {
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--text);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.5rem;
+  }
+  .prog-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .prog-meta-box {
+    background: var(--navy2);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .prog-meta-box-label {
+    font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .prog-meta-box-value {
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--gold); margin-top: 4px;
+  }
+  .prog-modal-body {
+    padding: 1.5rem 2rem;
+  }
+  .prog-modal-section {
+    margin-bottom: 1.5rem;
+  }
+  .prog-modal-section h4 {
+    font-size: 14px; font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .prog-modal-section h4::before {
+    content: ''; width: 4px; height: 16px;
+    background: var(--gold); border-radius: 2px;
+  }
+  .prog-modal-list {
+    list-style: none;
+  }
+  .prog-modal-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .prog-modal-list li:last-child { border-bottom: none; }
+  .prog-modal-list li::before {
+    content: '›'; position: absolute; left: 0;
+    color: var(--gold); font-weight: 700;
+  }
+  .prog-modal-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .prog-modal-tag {
+    padding: 6px 12px; border-radius: 20px;
+    font-size: 12px;
+    background: rgba(0, 90, 156, 0.08);
+    color: var(--gold);
+    border: 1px solid var(--border);
+  }
+  .prog-modal-footer {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border-light);
+    display: flex; gap: 1rem; justify-content: center;
+  }
+  .prog-modal-btn {
+    padding: 12px 28px; border-radius: 6px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer; border: none;
+  }
+  .prog-modal-btn.primary {
+    background: var(--gold); color: #fff;
+  }
+  .prog-modal-btn.primary:hover { background: var(--gold-light); }
+  .prog-modal-btn.outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .prog-modal-btn.outline:hover { border-color: var(--gold); color: var(--gold); }
+  .prog-card { cursor: pointer; }
+  
+  /* ─── LAB DETAILS MODAL ─── */
+  .lab-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .lab-modal-overlay.active { display: flex; }
+  .lab-modal {
+    background: var(--card-bg);
+    border-radius: 16px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlide 0.3s ease;
+    border: 1px solid var(--border);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  }
+  .lab-modal-header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .lab-modal-icon {
+    width: 64px; height: 64px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    background: var(--navy2);
+  }
+  .lab-modal-title-wrap {
+    flex: 1;
+  }
+  .lab-modal-title {
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--text);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.5rem;
+  }
+  .lab-modal-mode {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 12px; font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--navy2);
+  }
+  .lab-modal-body {
+    padding: 1.5rem 2rem;
+  }
+  .lab-modal-section {
+    margin-bottom: 1.5rem;
+  }
+  .lab-modal-section h4 {
+    font-size: 14px; font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .lab-modal-section h4::before {
+    content: ''; width: 4px; height: 16px;
+    background: var(--teal); border-radius: 2px;
+  }
+  .lab-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .lab-feature-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--navy2);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .lab-feature-icon {
+    width: 24px; height: 24px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .lab-equip-list {
+    list-style: none;
+  }
+  .lab-equip-list li {
+    padding: 0.6rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .lab-equip-list li:last-child { border-bottom: none; }
+  .lab-equip-list li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: var(--teal); font-weight: 700;
   }
 </style>
 </head>
@@ -765,7 +1038,7 @@
     </div>
     <div class="prog-grid" id="progGrid">
       <!-- B.Tech Programmes -->
-      <div class="prog-card" data-cat="btech">
+      <div class="prog-card" data-cat="btech" onclick="openProgModal('Cognitive Systems & AI Engineering (CSE)', 'btech', '4 Years', '160', 'AI Core, Algorithms, Systems Design, Ethics in AI')">
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
         </div>
@@ -778,7 +1051,7 @@
           <span class="prog-tag">AI Core</span><span class="prog-tag">Algorithms</span><span class="prog-tag">Systems Design</span><span class="prog-tag">Ethics in AI</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="btech quantum new">
+      <div class="prog-card" data-cat="btech quantum new" onclick="openProgModal('Quantum Machine Intelligence & Computing', 'btech', '4 Years', '160', 'Quantum Circuits, Qubits, Shor / Grover, Post-Quantum Crypto')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
@@ -792,7 +1065,7 @@
           <span class="prog-tag">Quantum Circuits</span><span class="prog-tag">Qubits</span><span class="prog-tag">Shor / Grover</span><span class="prog-tag">Post-Quantum Crypto</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="btech new">
+      <div class="prog-card" data-cat="btech new" onclick="openProgModal('Intelligent Networks & Cloud Systems (IT)', 'btech', '4 Years', '160', 'SDN, Cloud Native, 5G / 6G, Edge AI')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
@@ -806,7 +1079,7 @@
           <span class="prog-tag">SDN</span><span class="prog-tag">Cloud Native</span><span class="prog-tag">5G / 6G</span><span class="prog-tag">Edge AI</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="btech">
+      <div class="prog-card" data-cat="btech" onclick="openProgModal('AI & Data Science Engineering', 'btech', '4 Years', '160', 'Deep Learning, MLOps, GenAI, Analytics')">
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
         </div>
@@ -819,7 +1092,7 @@
           <span class="prog-tag">Deep Learning</span><span class="prog-tag">MLOps</span><span class="prog-tag">GenAI</span><span class="prog-tag">Analytics</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="btech">
+      <div class="prog-card" data-cat="btech" onclick="openProgModal('Cyber Defence & Ethical Hacking (CSE)', 'btech', '4 Years', '160', 'SOC, Penetration Testing, Forensics, Threat Intel')">
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
         </div>
@@ -832,7 +1105,7 @@
           <span class="prog-tag">SOC</span><span class="prog-tag">Penetration Testing</span><span class="prog-tag">Forensics</span><span class="prog-tag">Threat Intel</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="btech new">
+      <div class="prog-card" data-cat="btech new" onclick="openProgModal('Cloud-Native & DevSecOps Engineering (CSE)', 'btech', '4 Years', '160', 'Kubernetes, CI/CD, Platform Engineering, FinOps')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
@@ -846,7 +1119,7 @@
           <span class="prog-tag">Kubernetes</span><span class="prog-tag">CI/CD</span><span class="prog-tag">Platform Engineering</span><span class="prog-tag">FinOps</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="btech">
+      <div class="prog-card" data-cat="btech" onclick="openProgModal('Immersive Technology & Game Engineering', 'btech', '4 Years', '160', 'AR/VR/XR, Unreal Engine, Spatial Computing, 3D Graphics')">
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
         </div>
@@ -859,7 +1132,7 @@
           <span class="prog-tag">AR/VR/XR</span><span class="prog-tag">Unreal Engine</span><span class="prog-tag">Spatial Computing</span><span class="prog-tag">3D Graphics</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="btech">
+      <div class="prog-card" data-cat="btech" onclick="openProgModal('Full Stack & Product Engineering (CSE)', 'btech', '4 Years', '160', 'React / Next.js, System Design, Microservices, Product Mgmt')">
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
         </div>
@@ -872,7 +1145,7 @@
           <span class="prog-tag">React / Next.js</span><span class="prog-tag">System Design</span><span class="prog-tag">Microservices</span><span class="prog-tag">Product Mgmt</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="btech quantum new">
+      <div class="prog-card" data-cat="btech quantum new" onclick="openProgModal('Mathematics & Computational Intelligence', 'btech', '4 Years', '160', 'Number Theory, Cryptography, Optimisation, Statistical ML')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-btech">B.Tech</span></div>
@@ -887,7 +1160,7 @@
         </div>
       </div>
       <!-- B.Sc Programmes -->
-      <div class="prog-card" data-cat="bsc new">
+      <div class="prog-card" data-cat="bsc new" onclick="openProgModal('Artificial Intelligence & Cognitive Systems', 'bsc', '3 Years', '120', 'NLP, Computer Vision, Reinforcement Learning')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-bsc">B.Sc (Hons)</span></div>
@@ -901,7 +1174,7 @@
           <span class="prog-tag">NLP</span><span class="prog-tag">Computer Vision</span><span class="prog-tag">Reinforcement Learning</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="bsc quantum new">
+      <div class="prog-card" data-cat="bsc quantum new" onclick="openProgModal('Quantum Information Science & Technology', 'bsc', '3 Years', '120', 'Qubit Architecture, Quantum Error Correction, QASM')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-bsc">B.Sc (Hons)</span></div>
@@ -915,7 +1188,7 @@
           <span class="prog-tag">Qubit Architecture</span><span class="prog-tag">Quantum Error Correction</span><span class="prog-tag">QASM</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="bsc">
+      <div class="prog-card" data-cat="bsc" onclick="openProgModal('Data Intelligence & Business Analytics', 'bsc', '3 Years', '120', 'Power BI, Python Analytics, SQL / NoSQL')">
         <div class="prog-card-head">
           <div><span class="prog-level level-bsc">B.Sc</span></div>
         </div>
@@ -928,7 +1201,7 @@
           <span class="prog-tag">Power BI</span><span class="prog-tag">Python Analytics</span><span class="prog-tag">SQL / NoSQL</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="bsc">
+      <div class="prog-card" data-cat="bsc" onclick="openProgModal('Digital Forensics & Cyber Threat Intelligence', 'bsc', '3 Years', '120', 'Malware Analysis, OSINT, Incident Response')">
         <div class="prog-card-head">
           <div><span class="prog-level level-bsc">B.Sc</span></div>
         </div>
@@ -941,7 +1214,7 @@
           <span class="prog-tag">Malware Analysis</span><span class="prog-tag">OSINT</span><span class="prog-tag">Incident Response</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="bsc new">
+      <div class="prog-card" data-cat="bsc new" onclick="openProgModal('Generative AI & Creative Technology', 'bsc', '3 Years', '120', 'LLMs, Diffusion Models, Prompt Engineering')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-bsc">B.Sc</span></div>
@@ -956,7 +1229,7 @@
         </div>
       </div>
       <!-- M.Sc Programmes -->
-      <div class="prog-card" data-cat="msc new">
+      <div class="prog-card" data-cat="msc new" onclick="openProgModal('Advanced AI Systems Engineering', 'msc', '2 Years', '60', 'Foundation Models, AI Infrastructure, Research Thesis')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-msc">M.Sc</span></div>
@@ -970,7 +1243,7 @@
           <span class="prog-tag">Foundation Models</span><span class="prog-tag">AI Infrastructure</span><span class="prog-tag">Research Thesis</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="msc quantum new">
+      <div class="prog-card" data-cat="msc quantum new" onclick="openProgModal('Quantum Computing & Post-Quantum Cryptography', 'msc', '2 Years', '60', 'Quantum Algorithms, NIST PQC, Quantum Hardware')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-msc">M.Sc</span></div>
@@ -984,7 +1257,7 @@
           <span class="prog-tag">Quantum Algorithms</span><span class="prog-tag">NIST PQC</span><span class="prog-tag">Quantum Hardware</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="msc">
+      <div class="prog-card" data-cat="msc" onclick="openProgModal('Data Science, AI & Business Analytics', 'msc', '2 Years', '60', 'Causal ML, Time Series, Decision Intelligence')">
         <div class="prog-card-head">
           <div><span class="prog-level level-msc">M.Sc</span></div>
         </div>
@@ -998,7 +1271,7 @@
         </div>
       </div>
       <!-- Integrated -->
-      <div class="prog-card" data-cat="int quantum new">
+      <div class="prog-card" data-cat="int quantum new" onclick="openProgModal('B.Tech + M.Tech: Quantum Computing & Information Science', 'int', '5 Years', '220', 'Dual Degree, Research Track, Thesis')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-int">5-Year Integrated</span></div>
@@ -1012,7 +1285,7 @@
           <span class="prog-tag">Dual Degree</span><span class="prog-tag">Research Track</span><span class="prog-tag">Thesis</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="int new">
+      <div class="prog-card" data-cat="int new" onclick="openProgModal('B.Tech + M.Tech: AI Systems Engineering', 'int', '5 Years', '220', 'Dual Degree, AGI Research, Industry Project')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-int">5-Year Integrated</span></div>
@@ -1026,7 +1299,7 @@
           <span class="prog-tag">Dual Degree</span><span class="prog-tag">AGI Research</span><span class="prog-tag">Industry Project</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="int new">
+      <div class="prog-card" data-cat="int new" onclick="openProgModal('B.Sc + M.Sc: Data Intelligence & Cognitive Analytics', 'int', '5 Years', '180', 'Dual Degree, Industry Immersion')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-int">5-Year Integrated</span></div>
@@ -1041,7 +1314,7 @@
         </div>
       </div>
       <!-- PG Diplomas -->
-      <div class="prog-card" data-cat="pgd new">
+      <div class="prog-card" data-cat="pgd new" onclick="openProgModal('Applied AI & Generative Systems', 'pgd', '1 Year', '36', 'ABC Eligible, Hybrid Mode, Industry Mentored')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-pgd">PG Diploma</span></div>
@@ -1055,7 +1328,7 @@
           <span class="prog-tag">ABC Eligible</span><span class="prog-tag">Hybrid Mode</span><span class="prog-tag">Industry Mentored</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="pgd quantum new">
+      <div class="prog-card" data-cat="pgd quantum new" onclick="openProgModal('Quantum Computing Foundations & Applications', 'pgd', '1 Year', '36', 'ABC Eligible, IBM Qiskit, Research Oriented')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-pgd">PG Diploma</span></div>
@@ -1070,7 +1343,7 @@
         </div>
       </div>
       <!-- Certificates -->
-      <div class="prog-card" data-cat="cert new">
+      <div class="prog-card" data-cat="cert new" onclick="openProgModal('Certified AI Engineer (CAIE)', 'cert', '6 Months', '30', 'Self-Paced, ABC Credit, Industry Badge')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-cert">Certificate</span></div>
@@ -1084,7 +1357,7 @@
           <span class="prog-tag">Self-Paced</span><span class="prog-tag">ABC Credit</span><span class="prog-tag">Industry Badge</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="cert quantum new">
+      <div class="prog-card" data-cat="cert quantum new" onclick="openProgModal('Certified Quantum Developer (CQD)', 'cert', '4 Months', '24', 'Self-Paced, IBM Qiskit, Google Cirq')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-cert">Certificate</span></div>
@@ -1098,7 +1371,7 @@
           <span class="prog-tag">Self-Paced</span><span class="prog-tag">IBM Qiskit</span><span class="prog-tag">Google Cirq</span>
         </div>
       </div>
-      <div class="prog-card" data-cat="cert new">
+      <div class="prog-card" data-cat="cert new" onclick="openProgModal('Certified Cybersecurity Analyst (CCSA)', 'cert', '4 Months', '24', 'Self-Paced, CompTIA Aligned')">
         <div class="prog-new">NEW</div>
         <div class="prog-card-head">
           <div><span class="prog-level level-cert">Certificate</span></div>
@@ -1550,54 +1823,54 @@
       <p class="section-sub">World-class physical and virtual labs designed for hands-on learning in AI, quantum computing, cybersecurity, immersive tech and data intelligence.</p>
     </div>
     <div class="labs-grid">
-      <div class="lab-card aos" style="border-color:rgba(0, 168, 89, 0.2)">
+      <a href="lab-quantum.html" class="lab-card aos" style="border-color:rgba(0, 168, 89, 0.2); text-decoration: none; color: inherit;">
         <div class="lab-icon">⚛️</div>
         <h4>Quantum Computing Sandbox Lab</h4>
         <p>IBM Quantum Network access, Qiskit simulators, superconducting qubit emulators, quantum circuit design workstations. Physical hardware for trapped-ion simulation.</p>
         <div class="lab-mode" style="color:var(--teal)">🔬 Physical + Cloud (IBM Quantum / AWS Braket)</div>
-      </div>
-      <div class="lab-card aos" style="border-color:rgba(201,162,39,0.2);transition-delay:0.05s">
+      </a>
+      <a href="lab-ai-studio.html" class="lab-card aos" style="border-color:rgba(201,162,39,0.2);transition-delay:0.05s; text-decoration: none; color: inherit;">
         <div class="lab-icon">🧠</div>
         <h4>Generative AI &amp; Foundation Models Studio</h4>
         <p>H100 GPU cluster, large model fine-tuning environment, RAG pipelines, LLM evaluation frameworks, ethical AI audit tools, multimodal AI workbenches.</p>
         <div class="lab-mode" style="color:var(--gold)">💻 Physical + HPC Cloud (Google TPU / Azure)</div>
-      </div>
-      <div class="lab-card aos" style="border-color:rgba(239,68,68,0.2);transition-delay:0.1s">
+      </a>
+      <a href="lab-cybersecurity.html" class="lab-card aos" style="border-color:rgba(239,68,68,0.2);transition-delay:0.1s; text-decoration: none; color: inherit;">
         <div class="lab-icon">🛡️</div>
         <h4>Cybersecurity SOC &amp; Ethical Hacking Lab</h4>
         <p>Live threat intelligence feeds, SIEM platforms, isolated attack-defence networks, malware sandbox, penetration testing infrastructure, digital forensics toolkit.</p>
         <div class="lab-mode" style="color:#f87171">🔐 Physical — Air-gapped Network</div>
-      </div>
-      <div class="lab-card aos" style="border-color:rgba(124,58,237,0.2)">
+      </a>
+      <a href="lab-xr-studio.html" class="lab-card aos" style="border-color:rgba(124,58,237,0.2); text-decoration: none; color: inherit;">
         <div class="lab-icon">🥽</div>
         <h4>XR / Spatial Computing Studio</h4>
         <p>Meta Quest Pro headsets, Apple Vision Pro developer units, Unreal Engine workstations, haptic feedback rigs, 3D photogrammetry booth, spatial audio labs.</p>
         <div class="lab-mode" style="color:#a78bfa">🎨 Physical — Immersive Experience Suite</div>
-      </div>
-      <div class="lab-card aos" style="border-color:rgba(34,197,94,0.2);transition-delay:0.05s">
+      </a>
+      <a href="lab-data-analytics.html" class="lab-card aos" style="border-color:rgba(34,197,94,0.2);transition-delay:0.05s; text-decoration: none; color: inherit;">
         <div class="lab-icon">📊</div>
         <h4>Data Intelligence &amp; Analytics Hub</h4>
         <p>Real-time data pipeline infrastructure, Hadoop/Spark cluster, BI visualisation wall, streaming analytics platforms, data warehouse workbenches, KNIME / Tableau.</p>
         <div class="lab-mode" style="color:#4ade80">🌐 Physical + Cloud (Databricks / Snowflake)</div>
-      </div>
-      <div class="lab-card aos" style="border-color:rgba(251,146,60,0.2);transition-delay:0.1s">
+      </a>
+      <a href="lab-devsecops.html" class="lab-card aos" style="border-color:rgba(251,146,60,0.2);transition-delay:0.1s; text-decoration: none; color: inherit;">
         <div class="lab-icon">☁️</div>
         <h4>Cloud-Native &amp; DevSecOps Lab</h4>
         <p>Multi-cloud environment (AWS + GCP + Azure), Kubernetes clusters, CI/CD pipeline sandboxes, Infrastructure-as-Code labs, FinOps dashboards, chaos engineering tools.</p>
         <div class="lab-mode" style="color:#fb923c">☁️ Virtual — Multi-Cloud Sandbox</div>
-      </div>
-      <div class="lab-card aos">
+      </a>
+      <a href="lab-robotics.html" class="lab-card aos" style="text-decoration: none; color: inherit;">
         <div class="lab-icon">🤖</div>
         <h4>Robotics &amp; Embedded AI Lab</h4>
         <p>ROS2 robotic arms, edge AI accelerators (NVIDIA Jetson), autonomous vehicle simulation, drone swarm testbed, IoT sensor networks, embedded ML deployment.</p>
         <div class="lab-mode" style="color:var(--text-muted)">🔧 Physical — Hardware Integration Lab</div>
-      </div>
-      <div class="lab-card aos" style="transition-delay:0.05s">
+      </a>
+      <a href="lab-cognitive-classroom.html" class="lab-card aos" style="transition-delay:0.05s; text-decoration: none; color: inherit;">
         <div class="lab-icon">🎓</div>
         <h4>Cognitive Classroom &amp; Smart Learning Hub</h4>
         <p>AI-powered adaptive learning terminals, eye-tracking engagement monitors, peer collaboration pods, recording studio for flipped classroom content, live streaming for hybrid learners.</p>
         <div class="lab-mode" style="color:var(--text-muted)">📡 Physical + Hybrid Streaming</div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1677,8 +1950,8 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem">
-          <div style="width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:14px;color:var(--navy)">RG</div>
-          <div style="font-size:13px;font-weight:600;color:var(--text)">Rathinam Global Deemed to be University</div>
+          <div style="width:32px;height:32px;background:linear-gradient(135deg,var(--teal),#00cc66);border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:14px;color:var(--navy)">RG</div>
+          <div style="font-size:13px;font-weight:600;color:var(--teal)">Rathinam Global Deemed to be University</div>
         </div>
         <p>Coimbatore, Tamil Nadu, India. A leading deemed university shaping quantum-ready, AI-native graduates for the world's most demanding technology careers.</p>
       </div>
@@ -1759,6 +2032,539 @@
     });
   }, { threshold: 0.3 });
   document.querySelectorAll('.credit-visual').forEach(el => creditObserver.observe(el));
+
+  // Programme Details Modal
+  const progData = {
+    'Cognitive Systems & AI Engineering (CSE)': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'A comprehensive programme combining computer science fundamentals with advanced AI and cognitive systems. Students learn to build intelligent systems that can perceive, reason, and learn.',
+      highlights: ['AI Core Curriculum', 'Machine Learning & Deep Learning', 'Natural Language Processing', 'Computer Vision', 'Ethics in AI', 'Capstone Project'],
+      careers: ['AI Engineer', 'Machine Learning Scientist', 'Cognitive Systems Developer', 'Research Scientist'],
+      curriculum: ['Data Structures & Algorithms', 'Neural Networks & Deep Learning', 'Reinforcement Learning', 'Computer Vision', 'NLP & Transformers', 'AI Ethics & Governance']
+    },
+    'Quantum Machine Intelligence & Computing': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'India\'s first undergraduate quantum computing programme. Learn quantum algorithms, quantum machine learning, and post-quantum cryptography.',
+      highlights: ['Quantum Circuits & Qubits', 'Shor & Grover Algorithms', 'Quantum Machine Learning', 'Post-Quantum Cryptography', 'IBM Qiskit & Google Cirq', 'Quantum Research Lab'],
+      careers: ['Quantum Software Engineer', 'Quantum Researcher', 'Cryptography Expert', 'Quantum Algorithm Developer'],
+      curriculum: ['Introduction to Quantum Mechanics', 'Quantum Algorithms', 'Quantum Error Correction', 'Quantum Machine Learning', 'Post-Quantum Cryptography', 'Quantum Hardware Basics']
+    },
+    'Intelligent Networks & Cloud Systems (IT)': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'Master software-defined networking, cloud-native architectures, and 5G/6G technologies with hands-on industry projects.',
+      highlights: ['SDN & NFV', 'Cloud Native Development', '5G/6G Networks', 'Edge AI Computing', 'Network Security', 'DevOps & SRE'],
+      careers: ['Cloud Architect', 'Network Engineer', 'DevOps Engineer', 'SRE Specialist'],
+      curriculum: ['Computer Networks', 'Cloud Computing', 'Software Defined Networking', 'Network Security', 'Edge Computing', '5G Technologies']
+    },
+    'AI & Data Science Engineering': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'Build expertise in deep learning, MLOps, and generative AI with industry-aligned projects and research opportunities.',
+      highlights: ['Deep Learning', 'MLOps & Pipeline', 'Generative AI', 'Big Data Analytics', 'Data Engineering', 'Industry Projects'],
+      careers: ['Data Scientist', 'ML Engineer', 'AI Developer', 'Analytics Consultant'],
+      curriculum: ['Statistical Methods', 'Machine Learning', 'Deep Learning', 'Big Data Technologies', 'Generative AI', 'MLOps']
+    },
+    'Cyber Defence & Ethical Hacking (CSE)': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'Comprehensive cybersecurity training covering SOC operations, penetration testing, digital forensics, and threat intelligence.',
+      highlights: ['SOC Operations', 'Penetration Testing', 'Digital Forensics', 'Threat Intelligence', 'Malware Analysis', 'Incident Response'],
+      careers: ['Security Analyst', 'Ethical Hacker', 'Forensics Expert', 'SOC Manager'],
+      curriculum: ['Network Security', 'Cryptography', 'Ethical Hacking', 'Digital Forensics', 'Malware Analysis', 'Incident Response']
+    },
+    'Cloud-Native & DevSecOps Engineering (CSE)': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'Master Kubernetes, CI/CD pipelines, platform engineering, and FinOps for modern cloud infrastructure management.',
+      highlights: ['Kubernetes & Containers', 'CI/CD Pipelines', 'Platform Engineering', 'FinOps', 'Infrastructure as Code', 'Security Automation'],
+      careers: ['DevOps Engineer', 'Platform Engineer', 'SRE', 'Cloud Security Engineer'],
+      curriculum: ['Container Orchestration', 'CI/CD Tools', 'Infrastructure as Code', 'Cloud Security', 'Monitoring & Observability', 'FinOps']
+    },
+    'Immersive Technology & Game Engineering': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'Create AR/VR/XR experiences using Unreal Engine, Unity, and spatial computing technologies for next-gen applications.',
+      highlights: ['AR/VR/XR Development', 'Unreal Engine', 'Unity 3D', 'Spatial Computing', '3D Graphics', 'Game AI'],
+      careers: ['XR Developer', 'Game Engineer', '3D Artist', 'Technical Artist'],
+      curriculum: ['3D Graphics Programming', 'VR/AR Development', 'Game Engine Architecture', 'Computer Graphics', 'Game AI', 'UX for Immersive Tech']
+    },
+    'Full Stack & Product Engineering (CSE)': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'End-to-end product development covering React/Next.js, system design, microservices, and product management skills.',
+      highlights: ['React & Next.js', 'System Design', 'Microservices', 'Product Management', 'Backend Development', 'Database Design'],
+      careers: ['Full Stack Developer', 'Product Engineer', 'Tech Lead', 'Product Manager'],
+      curriculum: ['Frontend Development', 'Backend Systems', 'Database Management', 'System Design', 'Microservices', 'Product Management']
+    },
+    'Mathematics & Computational Intelligence': {
+      level: 'btech',
+      duration: '4 Years',
+      credits: '160',
+      description: 'Deep mathematical foundations for AI including number theory, cryptography, optimization, and statistical ML.',
+      highlights: ['Number Theory', 'Advanced Cryptography', 'Optimization', 'Statistical ML', 'Mathematical Modeling', 'Research Methods'],
+      careers: ['Quantitative Analyst', 'Cryptographer', 'ML Researcher', 'Data Scientist'],
+      curriculum: ['Linear Algebra', 'Probability & Statistics', 'Number Theory', 'Cryptography', 'Optimization', 'Statistical Learning']
+    },
+    'Artificial Intelligence & Cognitive Systems': {
+      level: 'bsc',
+      duration: '3 Years',
+      credits: '120',
+      description: 'B.Sc (Hons) programme focusing on NLP, computer vision, and reinforcement learning with research thesis.',
+      highlights: ['Natural Language Processing', 'Computer Vision', 'Reinforcement Learning', 'Research Thesis', 'AI Systems', 'Cognitive Science'],
+      careers: ['AI Specialist', 'Research Associate', 'Data Analyst', 'ML Developer'],
+      curriculum: ['Python for AI', 'Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'Research Methodology']
+    },
+    'Quantum Information Science & Technology': {
+      level: 'bsc',
+      duration: '3 Years',
+      credits: '120',
+      description: 'B.Sc programme in quantum computing covering qubit architecture, quantum error correction, and QASM programming.',
+      highlights: ['Qubit Architecture', 'Quantum Error Correction', 'QASM Programming', 'Quantum Algorithms', 'Physics of Information', 'Lab Work'],
+      careers: ['Quantum Technician', 'Research Assistant', 'Technical Writer', 'Lab Manager'],
+      curriculum: ['Quantum Mechanics Basics', 'Qubit Technologies', 'Quantum Gates', 'Error Correction', 'QASM', 'Quantum Lab']
+    },
+    'Data Intelligence & Business Analytics': {
+      level: 'bsc',
+      duration: '3 Years',
+      credits: '120',
+      description: 'Business-focused data science programme with Power BI, Python analytics, and SQL/NoSQL database skills.',
+      highlights: ['Power BI & Tableau', 'Python Analytics', 'SQL & NoSQL', 'Business Intelligence', 'Data Visualization', 'Predictive Analytics'],
+      careers: ['Business Analyst', 'Data Analyst', 'BI Developer', 'Analytics Consultant'],
+      curriculum: ['Statistics for Business', 'SQL & Databases', 'Python for Data Analysis', 'Data Visualization', 'Machine Learning Basics', 'Business Strategy']
+    },
+    'Digital Forensics & Cyber Threat Intelligence': {
+      level: 'bsc',
+      duration: '3 Years',
+      credits: '120',
+      description: 'Cybersecurity-focused B.Sc covering malware analysis, OSINT, and incident response techniques.',
+      highlights: ['Malware Analysis', 'OSINT Techniques', 'Incident Response', 'Digital Evidence', 'Threat Hunting', 'Cyber Law'],
+      careers: ['Forensics Analyst', 'Threat Intelligence Analyst', 'SOC Analyst', 'Incident Responder'],
+      curriculum: ['Computer Forensics', 'Malware Analysis', 'Network Security', 'Incident Response', 'Cyber Law', 'OSINT']
+    },
+    'Generative AI & Creative Technology': {
+      level: 'bsc',
+      duration: '3 Years',
+      credits: '120',
+      description: 'Creative AI programme covering LLMs, diffusion models, and prompt engineering for content creation.',
+      highlights: ['Large Language Models', 'Diffusion Models', 'Prompt Engineering', 'Creative AI Tools', 'Content Generation', 'AI Art'],
+      careers: ['AI Creative Specialist', 'Content Creator', 'Prompt Engineer', 'AI Product Designer'],
+      curriculum: ['Generative AI Fundamentals', 'LLM Applications', 'Diffusion Models', 'Prompt Engineering', 'Creative Coding', 'AI Ethics']
+    },
+    'Advanced AI Systems Engineering': {
+      level: 'msc',
+      duration: '2 Years',
+      credits: '60',
+      description: 'M.Sc programme on foundation models, AI infrastructure, and research thesis for advanced AI engineers.',
+      highlights: ['Foundation Models', 'AI Infrastructure', 'Research Thesis', 'Distributed Training', 'Model Optimization', 'AI Systems Design'],
+      careers: ['Senior AI Engineer', 'Research Scientist', 'AI Architect', 'Tech Lead'],
+      curriculum: ['Advanced ML', 'Deep Learning Systems', 'Foundation Models', 'Distributed AI', 'Research Methods', 'Thesis']
+    },
+    'Quantum Computing & Post-Quantum Cryptography': {
+      level: 'msc',
+      duration: '2 Years',
+      credits: '60',
+      description: 'Advanced quantum computing with focus on quantum algorithms and NIST post-quantum cryptography standards.',
+      highlights: ['Quantum Algorithms', 'NIST PQC Standards', 'Quantum Hardware', 'Quantum Networks', 'Research Thesis', 'IBM/Google Partnership'],
+      careers: ['Quantum Scientist', 'Cryptography Researcher', 'Quantum Engineer', 'Security Architect'],
+      curriculum: ['Advanced Quantum Algorithms', 'Post-Quantum Crypto', 'Quantum Hardware', 'Quantum Information', 'Research Project', 'Industry Collaboration']
+    },
+    'Data Science, AI & Business Analytics': {
+      level: 'msc',
+      duration: '2 Years',
+      credits: '60',
+      description: 'Industry-focused M.Sc covering causal ML, time series analysis, and decision intelligence.',
+      highlights: ['Causal ML', 'Time Series Analysis', 'Decision Intelligence', 'Business Strategy', 'Advanced Analytics', 'Capstone Project'],
+      careers: ['Senior Data Scientist', 'Analytics Manager', 'Decision Scientist', 'Strategy Consultant'],
+      curriculum: ['Advanced Statistics', 'Causal Inference', 'Time Series', 'Decision Science', 'Business Analytics', 'Capstone']
+    },
+    'B.Tech + M.Tech: Quantum Computing & Information Science': {
+      level: 'int',
+      duration: '5 Years',
+      credits: '220',
+      description: 'Integrated dual degree programme with research track and thesis in quantum computing.',
+      highlights: ['Dual Degree (B.Tech + M.Tech)', 'Research Track', 'Thesis Work', 'Quantum Specialization', 'Industry Projects', 'Research Publications'],
+      careers: ['Quantum Researcher', 'Senior Quantum Engineer', 'PhD Candidate', 'R&D Scientist'],
+      curriculum: ['B.Tech Foundation', 'M.Tech Advanced', 'Research Methodology', 'Thesis', 'Industry Internship', 'Seminars']
+    },
+    'B.Tech + M.Tech: AI Systems Engineering': {
+      level: 'int',
+      duration: '5 Years',
+      credits: '220',
+      description: '5-year integrated programme with AGI research focus and industry project experience.',
+      highlights: ['Dual Degree', 'AGI Research', 'Industry Project', 'Advanced AI', 'Research Thesis', 'Industry Collaboration'],
+      careers: ['AI Research Lead', 'Senior ML Engineer', 'Product Architect', 'Research Scientist'],
+      curriculum: ['Core Engineering', 'Advanced AI', 'AGI Fundamentals', 'Research Project', 'Industry Internship', 'Thesis']
+    },
+    'B.Sc + M.Sc: Data Intelligence & Cognitive Analytics': {
+      level: 'int',
+      duration: '5 Years',
+      credits: '180',
+      description: 'Integrated B.Sc+M.Sc with industry immersion for data intelligence professionals.',
+      highlights: ['Dual Degree', 'Industry Immersion', 'Cognitive Analytics', 'Research Skills', 'Industry Projects', 'Career Ready'],
+      careers: ['Data Intelligence Specialist', 'Analytics Lead', 'Research Analyst', 'BI Manager'],
+      curriculum: ['B.Sc Foundation', 'M.Sc Advanced', 'Cognitive Science', 'Analytics', 'Industry Project', 'Research']
+    },
+    'Applied AI & Generative Systems': {
+      level: 'pgd',
+      duration: '1 Year',
+      credits: '36',
+      description: 'PG Diploma in applied AI with ABC credit eligibility, hybrid mode, and industry mentoring.',
+      highlights: ['ABC Eligible', 'Hybrid Mode', 'Industry Mentored', 'Generative AI', 'Hands-on Projects', 'Job Ready'],
+      careers: ['AI Developer', 'GenAI Specialist', 'ML Engineer', 'AI Consultant'],
+      curriculum: ['AI Fundamentals', 'Generative AI', 'LLM Applications', 'Project Work', 'Industry Case Studies', 'Capstone']
+    },
+    'Quantum Computing Foundations & Applications': {
+      level: 'pgd',
+      duration: '1 Year',
+      credits: '36',
+      description: 'Research-oriented PG Diploma in quantum computing with IBM Qiskit certification.',
+      highlights: ['ABC Eligible', 'IBM Qiskit', 'Research Oriented', 'Quantum Algorithms', 'Lab Work', 'Certification'],
+      careers: ['Quantum Developer', 'Research Assistant', 'Technical Specialist', 'Quantum Analyst'],
+      curriculum: ['Quantum Basics', 'Quantum Algorithms', 'Qiskit Programming', 'Applications', 'Research Project', 'Certification']
+    },
+    'Certified AI Engineer (CAIE)': {
+      level: 'cert',
+      duration: '6 Months',
+      credits: '30',
+      description: 'Self-paced certificate programme with ABC credit and industry-recognized badge.',
+      highlights: ['Self-Paced', 'ABC Credit', 'Industry Badge', 'Hands-on', 'Project-Based', 'Job Assistance'],
+      careers: ['Junior AI Engineer', 'ML Developer', 'AI Analyst', 'Technical Support'],
+      curriculum: ['Python for AI', 'Machine Learning', 'Deep Learning', 'Project', 'Assessment', 'Certification']
+    },
+    'Certified Quantum Developer (CQD)': {
+      level: 'cert',
+      duration: '4 Months',
+      credits: '24',
+      description: 'Certificate in quantum development with IBM Qiskit and Google Cirq training.',
+      highlights: ['Self-Paced', 'IBM Qiskit', 'Google Cirq', 'Quantum Programming', 'Hands-on Labs', 'Certification'],
+      careers: ['Quantum Developer', 'Research Intern', 'Technical Writer', 'QA Engineer'],
+      curriculum: ['Quantum Computing Intro', 'Qiskit Basics', 'Cirq Basics', 'Algorithms', 'Labs', 'Project']
+    },
+    'Certified Cybersecurity Analyst (CCSA)': {
+      level: 'cert',
+      duration: '4 Months',
+      credits: '24',
+      description: 'CompTIA-aligned cybersecurity certificate covering SOC operations and threat analysis.',
+      highlights: ['Self-Paced', 'CompTIA Aligned', 'SOC Skills', 'Threat Analysis', 'Hands-on Labs', 'Certification'],
+      careers: ['Security Analyst', 'SOC Analyst', 'IT Security', 'Risk Analyst'],
+      curriculum: ['Security Fundamentals', 'Network Security', 'SOC Operations', 'Threat Intelligence', 'Incident Response', 'Assessment']
+    }
+  };
+
+  function openProgModal(title, level, duration, credits, tags) {
+    const data = progData[title] || {
+      description: 'Detailed programme information available soon.',
+      highlights: ['Comprehensive Curriculum', 'Industry Projects', 'Research Opportunities', 'Career Support'],
+      careers: ['Software Engineer', 'Data Analyst', 'Researcher', 'Consultant'],
+      curriculum: ['Core Subjects', 'Electives', 'Labs', 'Projects', 'Internship', 'Thesis/Capstone']
+    };
+    
+    const levelColors = {
+      btech: 'background:rgba(0, 168, 89, 0.12);color:var(--teal)',
+      bsc: 'background:rgba(124,58,237,0.12);color:#a78bfa',
+      msc: 'background:rgba(201,162,39,0.12);color:var(--gold)',
+      int: 'background:rgba(34,197,94,0.12);color:#4ade80',
+      pgd: 'background:rgba(251,146,60,0.12);color:#fb923c',
+      cert: 'background:rgba(239,68,68,0.12);color:#f87171'
+    };
+    
+    const levelNames = {
+      btech: 'B.Tech',
+      bsc: 'B.Sc',
+      msc: 'M.Sc',
+      int: 'Integrated',
+      pgd: 'PG Diploma',
+      cert: 'Certificate'
+    };
+    
+    document.getElementById('modalLevel').style.cssText = levelColors[level] || levelColors.btech;
+    document.getElementById('modalLevel').textContent = levelNames[level] || level;
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalDuration').textContent = duration;
+    document.getElementById('modalCredits').textContent = credits;
+    document.getElementById('modalSemesters').textContent = level === 'msc' ? '4' : level === 'cert' ? '1-2' : level === 'pgd' ? '2' : level === 'int' ? '10' : level === 'bsc' ? '6' : '8';
+    
+    document.getElementById('modalDesc').textContent = data.description;
+    
+    const highlightsHtml = data.highlights.map(h => `<li>${h}</li>`).join('');
+    document.getElementById('modalHighlights').innerHTML = highlightsHtml;
+    
+    const careersHtml = data.careers.map(c => `<li>${c}</li>`).join('');
+    document.getElementById('modalCareers').innerHTML = careersHtml;
+    
+    const curriculumHtml = data.curriculum.map(c => `<li>${c}</li>`).join('');
+    document.getElementById('modalCurriculum').innerHTML = curriculumHtml;
+    
+    const tagsHtml = tags.split(',').map(t => `<span class="prog-modal-tag">${t.trim()}</span>`).join('');
+    document.getElementById('modalTags').innerHTML = tagsHtml;
+    
+    document.getElementById('progModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProgModal() {
+    document.getElementById('progModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal on overlay click
+  document.getElementById('progModal').addEventListener('click', function(e) {
+    if (e.target === this) closeProgModal();
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeProgModal();
+      closeLabModal();
+    }
+  });
+
+  // Lab Details Modal Functions
+  const labData = {
+    'Quantum Computing Sandbox Lab': {
+      description: 'A cutting-edge quantum computing facility providing students with hands-on access to real quantum hardware and simulators. Students learn to design quantum circuits, implement quantum algorithms, and understand the physics of quantum information.',
+      features: ['IBM Quantum Network Access', 'Qiskit Runtime Simulators', 'Superconducting Qubit Emulators', 'Quantum Circuit Designer', 'Trapped-Ion Hardware', 'Noise Modeling Tools'],
+      equipment: ['IBM Quantum System One access', 'Rigetti Aspen simulators', 'AWS Braket integration', 'Google Cirq framework', 'Quantum error correction kits', 'Cryogenic control systems'],
+      courses: ['Introduction to Quantum Computing', 'Quantum Algorithms & Applications', 'Quantum Error Correction', 'Post-Quantum Cryptography'],
+      partners: ['IBM Quantum', 'AWS Braket', 'Google Quantum AI', 'Rigetti Computing']
+    },
+    'Generative AI & Foundation Models Studio': {
+      description: 'State-of-the-art AI facility equipped with high-performance GPU clusters for training and fine-tuning large language models and multimodal AI systems. Students work with cutting-edge generative AI tools and frameworks.',
+      features: ['H100 GPU Cluster (40x GPUs)', 'LLM Fine-tuning Pipelines', 'RAG System Development', 'Multimodal AI Workbenches', 'Ethical AI Audit Tools', 'Model Evaluation Frameworks'],
+      equipment: ['NVIDIA H100 Tensor Core GPUs', 'Google Cloud TPU v5', 'Azure OpenAI Service', 'Hugging Face Inference API', 'Weights & Biases MLOps', 'MLflow tracking servers'],
+      courses: ['Large Language Models', 'Generative AI Systems', 'Multimodal Deep Learning', 'AI Ethics & Governance'],
+      partners: ['NVIDIA', 'Google Cloud', 'Microsoft Azure', 'Hugging Face']
+    },
+    'Cybersecurity SOC & Ethical Hacking Lab': {
+      description: 'Professional-grade cybersecurity facility with isolated air-gapped networks for safe attack-defense exercises. Features real-world SOC operations, threat intelligence feeds, and advanced digital forensics capabilities.',
+      features: ['24/7 SOC Operations Center', 'Live Threat Intelligence Feeds', 'Air-gapped Attack Networks', 'Malware Analysis Sandbox', 'Digital Forensics Workstation', 'Penetration Testing Ranges'],
+      equipment: ['Splunk SIEM Enterprise', 'CrowdStrike Falcon', 'Kali Linux battle lab', 'Metasploit Pro frameworks', 'Wireshark network analyzers', 'EnCase forensic toolkit'],
+      courses: ['Ethical Hacking & Penetration Testing', 'Digital Forensics', 'Security Operations Center', 'Cyber Threat Intelligence'],
+      partners: ['CrowdStrike', 'Splunk', 'CompTIA', 'EC-Council']
+    },
+    'XR / Spatial Computing Studio': {
+      description: 'Immersive technology lab equipped with latest VR/AR headsets and development tools. Students create spatial computing experiences, 3D environments, and interactive simulations for various industries.',
+      features: ['VR/AR Development Workstations', 'Haptic Feedback Systems', '3D Photogrammetry Booth', 'Spatial Audio Labs', 'Motion Capture Corner', '360° Content Creation'],
+      equipment: ['Meta Quest Pro headsets', 'Apple Vision Pro dev kits', 'Unreal Engine 5 suites', 'Unity 6 workstations', 'Haptic glove controllers', '8K 360° camera rigs'],
+      courses: ['Virtual Reality Development', 'Augmented Reality Design', 'Spatial Computing', 'Immersive Experience Design'],
+      partners: ['Meta', 'Apple', 'Unreal Engine', 'Unity Technologies']
+    },
+    'Data Intelligence & Analytics Hub': {
+      description: 'Comprehensive data analytics facility with enterprise-grade infrastructure. Students work with big data technologies, real-time analytics, and business intelligence tools to derive actionable insights.',
+      features: ['Real-time Data Pipelines', 'Hadoop/Spark Clusters', 'Streaming Analytics Platform', 'BI Visualization Wall', 'Data Warehouse Workbenches', 'ETL/ELT Development Suites'],
+      equipment: ['Apache Spark cluster', 'Databricks workspaces', 'Snowflake data cloud', 'Tableau Server', 'Power BI Premium', 'KNIME Analytics Platform'],
+      courses: ['Big Data Technologies', 'Data Engineering', 'Business Intelligence', 'Real-time Analytics'],
+      partners: ['Databricks', 'Snowflake', 'Tableau', 'Microsoft']
+    },
+    'Cloud-Native & DevSecOps Lab': {
+      description: 'Multi-cloud DevSecOps facility providing hands-on experience with cloud platforms, container orchestration, and infrastructure automation. Students learn modern cloud-native development practices.',
+      features: ['Multi-cloud Sandbox Environment', 'Kubernetes Clusters', 'CI/CD Pipeline Labs', 'Infrastructure-as-Code', 'FinOps Dashboards', 'Chaos Engineering Tools'],
+      equipment: ['AWS, Azure, GCP sandboxes', 'Kubernetes training clusters', 'Terraform Cloud', 'Jenkins/GitLab CI', 'Prometheus monitoring', 'GitOps ArgoCD'],
+      courses: ['Cloud Architecture', 'DevOps Engineering', 'Site Reliability Engineering', 'Cloud Security'],
+      partners: ['AWS', 'Microsoft Azure', 'Google Cloud', 'GitLab']
+    },
+    'Robotics & Embedded AI Lab': {
+      description: 'Advanced robotics and embedded systems lab featuring industrial robotic arms, autonomous vehicles, and drone swarms. Students develop AI-powered robotics solutions and IoT applications.',
+      features: ['ROS2 Robotic Arms', 'Edge AI Accelerators', 'Autonomous Vehicle Sim', 'Drone Swarm Testbed', 'IoT Sensor Networks', 'Embedded ML Deployment'],
+      equipment: ['Universal Robots UR5e arms', 'NVIDIA Jetson AGX Orin', 'Crazyflie drone swarms', 'TurtleBot4 mobile robots', 'Raspberry Pi clusters', 'Arduino/Raspberry sensors'],
+      courses: ['Robotics & Automation', 'Embedded Systems', 'IoT & Edge Computing', 'Autonomous Systems'],
+      partners: ['NVIDIA', 'Universal Robots', 'ROS2 Community', 'Arduino']
+    },
+    'Cognitive Classroom & Smart Learning Hub': {
+      description: 'Next-generation smart classroom with AI-powered adaptive learning, eye-tracking analytics, and hybrid streaming capabilities. Designed for flipped classroom models and personalized education.',
+      features: ['AI-powered Adaptive Learning', 'Eye-tracking Engagement Monitors', 'Peer Collaboration Pods', 'Recording Studio', 'Hybrid Streaming Infrastructure', 'Smart Whiteboard Systems'],
+      equipment: ['AI tutoring platforms', 'Tobii eye-trackers', 'Zoom/Teams Rooms', 'OBS Studio setups', 'Interactive displays', 'Wireless presentation systems'],
+      courses: ['Educational Technology', 'Instructional Design', 'Hybrid Learning Systems', 'AI in Education'],
+      partners: ['Zoom', 'Microsoft Teams', 'Canvas LMS', 'Moodle']
+    }
+  };
+
+  function openLabModal(title, icon, modeType, provider) {
+    console.log('Lab modal clicked:', title);
+    const data = labData[title] || {
+      description: 'Advanced laboratory facility providing hands-on training with industry-standard equipment and technologies.',
+      features: ['State-of-the-art Equipment', 'Industry Partnerships', 'Hands-on Training', 'Research Opportunities'],
+      equipment: ['Modern Hardware', 'Cloud Resources', 'Software Tools', 'Development Kits'],
+      courses: ['Core Laboratory Course', 'Advanced Applications', 'Research Projects', 'Industry Internships'],
+      partners: ['Leading Technology Companies']
+    };
+    
+    const colorMap = {
+      'Quantum Computing Sandbox Lab': 'var(--teal)',
+      'Generative AI & Foundation Models Studio': 'var(--gold)',
+      'Cybersecurity SOC & Ethical Hacking Lab': '#f87171',
+      'XR / Spatial Computing Studio': '#a78bfa',
+      'Data Intelligence & Analytics Hub': '#4ade80',
+      'Cloud-Native & DevSecOps Lab': '#fb923c',
+      'Robotics & Embedded AI Lab': 'var(--text-muted)',
+      'Cognitive Classroom & Smart Learning Hub': 'var(--text-muted)'
+    };
+    
+    document.getElementById('labModalIcon').textContent = icon;
+    document.getElementById('labModalTitle').textContent = title;
+    document.getElementById('labModalMode').textContent = modeType + ' — ' + provider;
+    document.getElementById('labModalMode').style.color = colorMap[title] || 'var(--teal)';
+    document.getElementById('labModalDesc').textContent = data.description;
+    
+    const featuresHtml = data.features.map(f => `
+      <div class="lab-feature-item">
+        <span class="lab-feature-icon" style="background:${colorMap[title]}20;color:${colorMap[title]}">✓</span>
+        ${f}
+      </div>
+    `).join('');
+    document.getElementById('labModalFeatures').innerHTML = featuresHtml;
+    
+    const equipHtml = data.equipment.map(e => `<li>${e}</li>`).join('');
+    document.getElementById('labModalEquip').innerHTML = equipHtml;
+    
+    const coursesHtml = data.courses.map(c => `<li>${c}</li>`).join('');
+    document.getElementById('labModalCourses').innerHTML = coursesHtml;
+    
+    const partnersHtml = data.partners.map(p => `<span class="prog-modal-tag">${p}</span>`).join('');
+    document.getElementById('labModalPartners').innerHTML = partnersHtml;
+    
+    document.getElementById('labModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLabModal() {
+    document.getElementById('labModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Lab modal event listener setup after DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    // Lab modal overlay click
+    const labModal = document.getElementById('labModal');
+    if (labModal) {
+      labModal.addEventListener('click', function(e) {
+        if (e.target === this) closeLabModal();
+      });
+    }
+    
+    // Attach click handlers to all lab cards using event delegation
+    const labsGrid = document.querySelector('.labs-grid');
+    if (labsGrid) {
+      labsGrid.addEventListener('click', function(e) {
+        const card = e.target.closest('.lab-card');
+        if (!card) return;
+        
+        const title = card.getAttribute('data-lab');
+        const icon = card.getAttribute('data-icon');
+        const mode = card.getAttribute('data-mode');
+        const provider = card.getAttribute('data-provider');
+        const desc = card.getAttribute('data-desc');
+        
+        if (title) {
+          openLabModal(title, icon, mode, provider, desc);
+        }
+      });
+    }
+  });
 </script>
+
+<!-- Programme Details Modal -->
+<div class="prog-modal-overlay" id="progModal">
+  <div class="prog-modal">
+    <button class="prog-modal-close" onclick="closeProgModal()">×</button>
+    <div class="prog-modal-header">
+      <span class="prog-modal-level" id="modalLevel">B.Tech</span>
+      <h3 class="prog-modal-title" id="modalTitle">Programme Title</h3>
+      <div class="prog-meta-grid">
+        <div class="prog-meta-box">
+          <div class="prog-meta-box-label">Duration</div>
+          <div class="prog-meta-box-value" id="modalDuration">4 Years</div>
+        </div>
+        <div class="prog-meta-box">
+          <div class="prog-meta-box-label">Credits</div>
+          <div class="prog-meta-box-value" id="modalCredits">160</div>
+        </div>
+        <div class="prog-meta-box">
+          <div class="prog-meta-box-label">Semesters</div>
+          <div class="prog-meta-box-value" id="modalSemesters">8</div>
+        </div>
+      </div>
+    </div>
+    <div class="prog-modal-body">
+      <div class="prog-modal-section">
+        <h4>Programme Overview</h4>
+        <p id="modalDesc" style="font-size:14px;color:var(--text-muted);line-height:1.7;">Description goes here.</p>
+      </div>
+      <div class="prog-modal-section">
+        <h4>Key Highlights</h4>
+        <ul class="prog-modal-list" id="modalHighlights"></ul>
+      </div>
+      <div class="prog-modal-section">
+        <h4>Career Opportunities</h4>
+        <ul class="prog-modal-list" id="modalCareers"></ul>
+      </div>
+      <div class="prog-modal-section">
+        <h4>Core Curriculum</h4>
+        <ul class="prog-modal-list" id="modalCurriculum"></ul>
+      </div>
+      <div class="prog-modal-section">
+        <h4>Skills & Technologies</h4>
+        <div class="prog-modal-tags" id="modalTags"></div>
+      </div>
+    </div>
+    <div class="prog-modal-footer">
+      <a href="https://www.rathinam.global/#apply" target="_blank" class="prog-modal-btn primary">Apply Now ↗</a>
+      <button class="prog-modal-btn outline" onclick="closeProgModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Lab Details Modal -->
+<div class="lab-modal-overlay" id="labModal">
+  <div class="lab-modal">
+    <button class="prog-modal-close" onclick="closeLabModal()">×</button>
+    <div class="lab-modal-header">
+      <div class="lab-modal-icon" id="labModalIcon">⚛️</div>
+      <div class="lab-modal-title-wrap">
+        <h3 class="lab-modal-title" id="labModalTitle">Lab Title</h3>
+        <span class="lab-modal-mode" id="labModalMode">Mode — Provider</span>
+      </div>
+    </div>
+    <div class="lab-modal-body">
+      <div class="lab-modal-section">
+        <h4>Lab Overview</h4>
+        <p id="labModalDesc" style="font-size:14px;color:var(--text-muted);line-height:1.7;">Description goes here.</p>
+      </div>
+      <div class="lab-modal-section">
+        <h4>Key Features</h4>
+        <div class="lab-features-grid" id="labModalFeatures"></div>
+      </div>
+      <div class="lab-modal-section">
+        <h4>Equipment & Infrastructure</h4>
+        <ul class="lab-equip-list" id="labModalEquip"></ul>
+      </div>
+      <div class="lab-modal-section">
+        <h4>Associated Courses</h4>
+        <ul class="lab-equip-list" id="labModalCourses"></ul>
+      </div>
+      <div class="lab-modal-section">
+        <h4>Industry Partners</h4>
+        <div class="prog-modal-tags" id="labModalPartners"></div>
+      </div>
+    </div>
+    <div class="prog-modal-footer">
+      <a href="https://www.rathinam.global/#apply" target="_blank" class="prog-modal-btn primary">Apply Now ↗</a>
+      <button class="prog-modal-btn outline" onclick="closeLabModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
