@@ -592,7 +592,7 @@
   .int-features li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
 
   /* ─── APPLY ─── */
-  #apply { padding: 6rem 0; background: linear-gradient(135deg, #f4f7f6 0%, #e2e8e4 100%); border-top: 1px solid var(--border); }
+  #apply { padding: 6rem 0; background: linear-gradient(135deg, rgba(16,164,232,0.06) 0%, rgba(122,42,168,0.06) 100%); border-top: 1px solid var(--border); }
   .apply-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
   .apply-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
   .form-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
@@ -605,7 +605,7 @@
   }
   .form-group select option { background: var(--navy2); }
   .apply-qr { text-align: center; }
-  .apply-qr-box { width: 140px; height: 140px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem; font-size: 60px; }
+  .apply-qr-box { width: 140px; height: 140px; background: rgba(255,255,255,0.08); border: 1px solid var(--border-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem; font-size: 60px; box-shadow: 0 18px 40px rgba(0,0,0,0.35); backdrop-filter: blur(14px); }
 
   /* ─── FOOTER ─── */
   footer {
@@ -614,11 +614,11 @@
     padding: 3rem 0 1.5rem;
   }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
-  .footer-brand p { font-size: 13px; color: #a0aab5; margin-top: 0.75rem; line-height: 1.7; max-width: 280px; }
+  .footer-brand p { font-size: 13px; color: var(--text-dim); margin-top: 0.75rem; line-height: 1.7; max-width: 280px; }
   .footer-col h5 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 1rem; font-family: 'DM Sans', sans-serif; }
-  .footer-col a { display: block; font-size: 13px; color: #a0aab5; text-decoration: none; padding: 3px 0; transition: color 0.2s; }
+  .footer-col a { display: block; font-size: 13px; color: var(--text-dim); text-decoration: none; padding: 3px 0; transition: color 0.2s; }
   .footer-col a:hover { color: var(--text); }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #a0aab5; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-dim); }
   .footer-bottom a { color: var(--gold); text-decoration: none; }
 
   /* ─── QUANTUM SECTION ─── */
