@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rathinam Global Deemed to be University | School of Computing, AI & Emerging Technologies</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #ffffff;
+    --navy2: #f4f7f6;
+    --navy3: #e2e8e4;
+    --gold: #005A9C;
+    --gold-light: #0073CF;
+    --gold-pale: #e6f0fa;
+    --teal: #00A859;
+    --teal-dark: #008040;
+    --text: #1a1a1a;
+    --text-muted: #555555;
+    --text-dim: #777777;
+    --border: rgba(0, 90, 156, 0.15);
+    --border-light: rgba(0,0,0,0.05);
+    --card-bg: #ffffff;
+    --success: #22c55e;
+    --purple: #7c3aed;
+    --coral: #e05a4e;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy); color: var(--text);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.65;
+  }
+  h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.01'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--gold), var(--teal));
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 16px;
+    color: #ffffff;
+  }
+  .nav-logo-text { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.2; }
+  .nav-logo-sub { font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: #ffffff;
+    padding: 8px 20px; border-radius: 4px;
+    font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    padding: 8rem 2rem 4rem;
+    overflow: hidden;
+    text-align: center;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 90, 156, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 90, 156, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(0, 90, 156, 0.08) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,162,39,0.1);
+    border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px; color: var(--gold);
+    font-weight: 500; letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity: 0.3; } }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--text);
+    max-width: 900px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--text-muted);
+    max-width: 640px; margin: 1.5rem auto 0;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 3rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold); }
+  .hero-stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .hero-actions {
+    display: flex; gap: 1rem; margin-top: 2.5rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--gold); color: #ffffff;
+    padding: 12px 28px; border-radius: 4px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(201,162,39,0.4);
+    color: var(--gold);
+    padding: 12px 28px; border-radius: 4px;
+    font-size: 14px; font-weight: 500;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(0, 90, 156, 0.07); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--text-dim); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); }
+
+  /* ─── SECTIONS ─── */
+  section { position: relative; z-index: 1; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+  .section-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--text); }
+  .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 600px; margin-top: 0.75rem; line-height: 1.7; }
+  .divider-line { width: 48px; height: 2px; background: var(--gold); margin: 1rem 0; }
+
+  /* ─── BENCHMARK SECTION ─── */
+  #benchmark { padding: 6rem 0; background: var(--navy2); }
+  .bench-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 4rem; }
+  .bench-table-wrap { overflow-x: auto; }
+  table.bench-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.bench-table th {
+    text-align: left; padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--gold); font-weight: 600; font-family: 'DM Sans', sans-serif;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: rgba(201,162,39,0.05);
+  }
+  table.bench-table td { padding: 12px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+  table.bench-table tr:hover td { background: rgba(0,0,0,0.02); }
+  .tier-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 3px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.05em;
+  }
+  .tier-1 { background: rgba(201,162,39,0.15); color: var(--gold); }
+  .tier-2 { background: rgba(0, 168, 89, 0.12); color: var(--teal); }
+  .tier-3 { background: rgba(124,58,237,0.15); color: #a78bfa; }
+  .gap-insight {
+    background: rgba(0, 168, 89, 0.05);
+    border: 1px solid rgba(0, 168, 89, 0.15);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.2rem;
+    margin-top: 1.5rem;
+  }
+  .gap-insight-title { font-size: 12px; color: var(--teal); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  .gap-insight p { font-size: 13px; color: var(--text-muted); }
+
+  /* ─── SCHOOLS ─── */
+  #schools { padding: 6rem 0; }
+  .schools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; margin-top: 3rem; background: var(--border-light); border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-radius: 12px; overflow: hidden; }
+  .school-card {
+    background: var(--navy2);
+    padding: 2rem;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .school-card:hover { background: var(--navy3); }
+  .school-icon {
+    width: 44px; height: 44px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 1rem;
+  }
+  .school-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--text); font-family: 'DM Sans', sans-serif; }
+  .school-card p { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .school-count { font-size: 12px; color: var(--gold); font-weight: 600; margin-top: 0.75rem; }
+  .school-featured { border: 1px solid var(--border) !important; background: rgba(0, 90, 156, 0.04) !important; }
+
+  /* ─── PROGRAMME EXPLORER ─── */
+  #programmes { padding: 6rem 0; background: var(--navy2); }
+  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 2rem 0; }
+  .filter-btn {
+    padding: 7px 16px; border-radius: 20px;
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    background: transparent; color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: rgba(201,162,39,0.12);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .prog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
+  .prog-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-radius: 10px;
+    padding: 1.4rem;
+    transition: all 0.25s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .prog-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .prog-card:hover { border-color: var(--border); transform: translateY(-2px); }
+  .prog-card:hover::before { opacity: 1; }
+  .prog-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .prog-level {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 3px 9px; border-radius: 3px;
+  }
+  .level-btech { background: rgba(0, 168, 89, 0.12); color: var(--teal); }
+  .level-bsc { background: rgba(124,58,237,0.12); color: #a78bfa; }
+  .level-msc { background: rgba(201,162,39,0.12); color: var(--gold); }
+  .level-int { background: rgba(34,197,94,0.12); color: #4ade80; }
+  .level-cert { background: rgba(239,68,68,0.12); color: #f87171; }
+  .level-pgd { background: rgba(251,146,60,0.12); color: #fb923c; }
+  .prog-card h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-top: 0.75rem; font-family: 'DM Sans', sans-serif; line-height: 1.4; }
+  .prog-card-meta { display: flex; gap: 1rem; margin-top: 0.6rem; }
+  .prog-meta-item { font-size: 11px; color: var(--text-muted); }
+  .prog-meta-item span { color: var(--text); font-weight: 500; }
+  .prog-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 0.8rem; }
+  .prog-tag {
+    font-size: 10px; padding: 2px 7px;
+    background: rgba(0,0,0,0.03);
+    border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-radius: 3px; color: var(--text-muted);
+  }
+  .prog-new { position: absolute; top: 12px; right: 12px; font-size: 9px; background: var(--gold); color: #ffffff; padding: 2px 6px; border-radius: 3px; font-weight: 700; letter-spacing: 0.05em; }
+
+  /* ─── FEATURED PROGRAMME DEEP DIVE ─── */
+  #deepdive { padding: 6rem 0; }
+  .deepdive-header { display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: start; margin-bottom: 4rem; }
+  .deepdive-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 168, 89, 0.1); border: 1px solid rgba(0, 168, 89, 0.2); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--teal); margin-bottom: 1rem; }
+  .curriculum-tabs { display: flex; gap: 2px; background: rgba(0,0,0,0.03); border-radius: 6px; padding: 3px; margin-bottom: 2rem; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 7px 16px; border-radius: 4px; border: none;
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    background: transparent; color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .tab-btn.active { background: var(--navy3); color: var(--text); border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .sem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .sem-block {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-radius: 8px;
+    padding: 1.2rem;
+  }
+  .sem-block h5 {
+    font-size: 11px; font-weight: 700; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.8rem; font-family: 'DM Sans', sans-serif;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .course-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+    font-size: 12px;
+  }
+  .course-row:last-child { border-bottom: none; }
+  .course-name { color: var(--text); flex: 1; }
+  .course-credit { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); margin-left: 8px; }
+  .course-type { font-size: 10px; padding: 1px 6px; border-radius: 2px; margin-left: 6px; }
+  .ct-core { background: rgba(0, 168, 89, 0.1); color: var(--teal); }
+  .ct-elec { background: rgba(124,58,237,0.1); color: #a78bfa; }
+  .ct-lab { background: rgba(34,197,94,0.1); color: #4ade80; }
+  .ct-proj { background: rgba(201,162,39,0.1); color: var(--gold); }
+  .ct-skill { background: rgba(251,146,60,0.1); color: #fb923c; }
+  .info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: sticky; top: 80px;
+  }
+  .info-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text); }
+  .info-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border-light); font-size: 13px; }
+  .info-row:last-of-type { border-bottom: none; }
+  .info-label { color: var(--text-muted); }
+  .info-val { color: var(--text); font-weight: 500; }
+  .cert-list { margin-top: 1rem; }
+  .cert-item { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 12px; color: var(--text-muted); }
+  .cert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .career-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 0.5rem; }
+  .career-tag { font-size: 11px; padding: 3px 8px; border-radius: 3px; background: rgba(0,0,0,0.04); border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03); color: var(--text-muted); }
+
+  /* ─── NEP CREDIT DASHBOARD ─── */
+  #nep { padding: 6rem 0; background: var(--navy2); }
+  .nep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+  .credit-visual { background: var(--card-bg); border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-radius: 12px; padding: 2rem; }
+  .credit-visual h4 { font-size: 1rem; font-weight: 600; margin-bottom: 1.5rem; font-family: 'DM Sans', sans-serif; }
+  .credit-bar { margin-bottom: 1.2rem; }
+  .credit-bar-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+  .credit-bar-label span:first-child { color: var(--text-muted); }
+  .credit-bar-label span:last-child { color: var(--text); font-weight: 600; font-family: 'DM Mono', monospace; }
+  .credit-track { height: 6px; background: rgba(0,0,0,0.05); border-radius: 3px; overflow: hidden; }
+  .credit-fill { height: 100%; border-radius: 3px; transition: width 1.5s ease; }
+  .exit-points { margin-top: 2rem; }
+  .exit-point { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-radius: 6px; margin-bottom: 8px; }
+  .exit-num { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; }
+  .exit-info h5 { font-size: 13px; font-weight: 600; color: var(--text); font-family: 'DM Sans', sans-serif; }
+  .exit-info p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ─── LABS ─── */
+  #labs { padding: 6rem 0; }
+  .labs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  .lab-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .lab-card:hover { border-color: var(--border); }
+  .lab-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  }
+  .lab-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .lab-card h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; }
+  .lab-card p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .lab-mode { font-size: 11px; margin-top: 0.75rem; font-weight: 600; }
+
+  /* ─── BENCHMARK INSIGHTS ─── */
+  #insights { padding: 6rem 0; background: var(--navy2); }
+  .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+  .insight-card { background: var(--card-bg); border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-radius: 10px; padding: 1.5rem; }
+  .insight-source { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .insight-card h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; }
+  .insight-card p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .insight-adopted { font-size: 11px; color: var(--teal); margin-top: 0.75rem; font-weight: 500; }
+
+  /* ─── NEW INTEGRATED PROGRAMMES ─── */
+  #integrated { padding: 6rem 0; }
+  .int-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .int-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative; overflow: hidden;
+  }
+  .int-card-glow {
+    position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.07;
+  }
+  .int-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 9px; border-radius: 3px; margin-bottom: 1rem; }
+  .int-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+  .int-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  .int-features { list-style: none; }
+  .int-features li { font-size: 12px; color: var(--text-muted); padding: 4px 0; padding-left: 16px; position: relative; }
+  .int-features li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* ─── APPLY ─── */
+  #apply { padding: 6rem 0; background: linear-gradient(135deg, #f4f7f6 0%, #e2e8e4 100%); border-top: 1px solid var(--border); }
+  .apply-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+  .apply-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .form-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+  .form-group select, .form-group input {
+    width: 100%; background: rgba(0,0,0,0.04);
+    border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-radius: 6px; padding: 10px 14px;
+    color: var(--text); font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .form-group select option { background: var(--navy2); }
+  .apply-qr { text-align: center; }
+  .apply-qr-box { width: 140px; height: 140px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem; font-size: 60px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy); color: var(--text);
+    border-top: 1px solid var(--border);
+    padding: 3rem 0 1.5rem;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+  .footer-brand p { font-size: 13px; color: #a0aab5; margin-top: 0.75rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h5 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 1rem; font-family: 'DM Sans', sans-serif; }
+  .footer-col a { display: block; font-size: 13px; color: #a0aab5; text-decoration: none; padding: 3px 0; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--text); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #a0aab5; }
+  .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+  /* ─── QUANTUM SECTION ─── */
+  #quantum { padding: 6rem 0; background: linear-gradient(180deg, #ffffff 0%, #f4f7f6 100%); position: relative; overflow: hidden; }
+  #quantum::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(0, 168, 89, 0.06), transparent 60%); pointer-events: none; }
+  .quantum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .quantum-viz { background: var(--card-bg); border: 1px solid rgba(0, 168, 89, 0.2); border-radius: 12px; padding: 2rem; }
+  .q-node { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(0, 168, 89, 0.08); }
+  .q-node:last-child { border-bottom: none; }
+  .q-circle { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--teal); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--teal); flex-shrink: 0; }
+  .q-info h5 { font-size: 13px; font-weight: 600; color: var(--text); font-family: 'DM Sans', sans-serif; }
+  .q-info p { font-size: 11px; color: var(--text-muted); }
+  .q-semester { font-size: 10px; color: var(--teal); font-weight: 600; margin-left: auto; white-space: nowrap; }
+
+  /* ─── FACULTY ─── */
+  #faculty { padding: 6rem 0; background: var(--navy2); }
+  .faculty-card { max-width: 500px; background: var(--card-bg); border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-radius: 12px; padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+  .faculty-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), #8b6914); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #ffffff; flex-shrink: 0; }
+  .faculty-info h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+  .faculty-info p { font-size: 12px; color: var(--text-muted); margin-top: 0.3rem; line-height: 1.6; }
+  .faculty-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gold); text-decoration: none; margin-top: 0.75rem; font-weight: 500; }
+
+  /* ─── ANIMATE ON SCROLL ─── */
+  .aos { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+  .aos.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .bench-intro { grid-template-columns: 1fr; }
+    .deepdive-header { grid-template-columns: 1fr; }
+    .sem-grid { grid-template-columns: 1fr; }
+    .nep-grid { grid-template-columns: 1fr; }
+    .insight-grid { grid-template-columns: 1fr; }
+    .quantum-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .apply-inner { grid-template-columns: 1fr; }
+    .apply-qr { display: none; }
+  }
+
+  .hero-img-container {
+    margin-top: 3rem;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    animation: fadeUp 0.8s 0.5s ease both;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+  .hero-img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo-Final.png" alt="Rathinam Global Logo" style="height: 50px;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#benchmark">Analysis</a></li>
+    <li><a href="#programmes">Programmes</a></li>
+    <li><a href="#deepdive">Curriculum</a></li>
+    <li><a href="#quantum">Quantum</a></li>
+    <li><a href="#labs">Labs</a></li>
+    <li><a href="#nep">NEP 2020</a></li>
+  </ul>
+  <a href="https://www.rathinam.global/#apply" target="_blank" class="nav-cta">Apply 2026–27</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Admissions Open — Academic Year 2026–27
+  </div>
+  <h1>Where <em>Intelligence</em> Meets<br>Academic Excellence</h1>
+  <p class="hero-sub">Rathinam Global Deemed to be University — Coimbatore's first institution offering quantum-ready, AI-native degree programmes benchmarked against IIT Madras, IIIT-H, NUS &amp; MIT.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">87+</div>
+      <div class="hero-stat-label">Programmes</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">5</div>
+      <div class="hero-stat-label">Schools</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">NEP</div>
+      <div class="hero-stat-label">2020 Aligned</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">ABC</div>
+      <div class="hero-stat-label">Credit Bank</div>
+    </div>
+  </div>
+  
+  <div class="hero-img-container">
+    <img src="RGU-004.png" alt="Rathinam Global University" />
+  </div>
+
+  <div class="hero-actions">
+    <a href="https://www.rathinam.global/#apply" target="_blank" class="btn-primary">Apply Now ↗</a>
+    <a href="#programmes" class="btn-outline">Explore Programmes</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- BENCHMARK SECTION -->
+<section id="benchmark">
+  <div class="container">
+    <div class="bench-intro">
+      <div class="aos">
+        <div class="section-tag">Global Benchmarking</div>
+        <h2 class="section-title">How We Compare<br>Against the Best</h2>
+        <div class="divider-line"></div>
+        <p class="section-sub">Our curriculum was designed after rigorous analysis of programmes at IIT Madras (#1 NIRF), IIIT Hyderabad, IIT Bombay, NUS Singapore, MIT, and Stanford — extracting the finest pedagogical practices.</p>
+        <div class="gap-insight">
+          <div class="gap-insight-title">🎯 Our Differentiation</div>
+          <p>Unlike most institutions, RGDU integrates Quantum Computing, AGI fundamentals, and Psychological Impact of Technology as <em>core courses</em> from Year 1 — a structure borrowed from MIT's interdisciplinary model and adapted for India's NEP 2020 framework.</p>
+        </div>
+      </div>
+      <div class="aos" style="transition-delay:0.15s">
+        <div class="insight-card" style="margin-bottom:1rem">
+          <div class="insight-source">Key Finding — IIT Madras</div>
+          <h4>3-Basket PG Structure</h4>
+          <p>Theory + Systems + AI/ML — every student must credit from each basket. We adopted this for M.Sc programmes, ensuring breadth and depth simultaneously.</p>
+        </div>
+        <div class="insight-card" style="margin-bottom:1rem">
+          <div class="insight-source">Key Finding — IIIT-H</div>
+          <h4>EECS Convergence Model</h4>
+          <p>CS and ECE convergence; breadth electives from Year 2 onwards. We embed hardware-software co-design tracks in our B.Tech CSE from Semester 3.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-source">Key Finding — NUS</div>
+          <h4>Common Pool Admission + AI Split</h4>
+          <p>From 2025/26, NUS admits CS + AI students in one pool, splitting in Year 3. We implement this as a Flexible Specialisation System (FSS) from Semester 5.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bench-table-wrap aos">
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th>Institution</th>
+            <th>Tier</th>
+            <th>Programme</th>
+            <th>Credits / Duration</th>
+            <th>Differentiating Feature</th>
+            <th>Adopted by RGDU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">IIT Madras</td>
+            <td><span class="tier-badge tier-1">NIRF #1</span></td>
+            <td>B.Tech CSE</td>
+            <td>180 credits / 4 yrs</td>
+            <td>S/E/H/P/F credit classification; Honours track with research courses</td>
+            <td style="color:var(--success)">✓ Credit taxonomy, Honours stream</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">IIIT Hyderabad</td>
+            <td><span class="tier-badge tier-1">NIRF #47</span></td>
+            <td>B.Tech CSE</td>
+            <td>160 credits / 4 yrs</td>
+            <td>Research-driven from Year 1; IT Workshops; 47.5% major credits; EECS convergence</td>
+            <td style="color:var(--success)">✓ IT Workshops, EECS modules</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">IIT Bombay</td>
+            <td><span class="tier-badge tier-1">NIRF #3</span></td>
+            <td>B.Tech CSE + Dual Degree</td>
+            <td>240 credits / 5 yrs (dual)</td>
+            <td>Lean mandatory core; maximum elective flexibility; IDDDP AI/DS add-on</td>
+            <td style="color:var(--success)">✓ Lean core + rich electives model</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">NUS Singapore</td>
+            <td><span class="tier-badge tier-2">QS #8</span></td>
+            <td>BComp CS + AI (2025)</td>
+            <td>160 MCs / 4 yrs</td>
+            <td>Common admission pool; undeclared major for 2 yrs; quantum + cyber integration; project portfolio</td>
+            <td style="color:var(--success)">✓ Flexible Specialisation, portfolio model</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">MIT</td>
+            <td><span class="tier-badge tier-2">QS #1</span></td>
+            <td>6-3 CS Program</td>
+            <td>180 units / 4 yrs</td>
+            <td>Quantum computation (18.435J); Shor/Grover algorithms; physics of information</td>
+            <td style="color:var(--success)">✓ Quantum track, information physics</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">Stanford</td>
+            <td><span class="tier-badge tier-2">QS #5</span></td>
+            <td>CS + Quantum Track</td>
+            <td>180 units / 4 yrs</td>
+            <td>3 Quantum tracks: Algorithms, Hardware, Theory; CS259Q core course</td>
+            <td style="color:var(--success)">✓ 3-track quantum architecture</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">IISc Bangalore</td>
+            <td><span class="tier-badge tier-1">NIRF #1 Univ.</span></td>
+            <td>B.Sc (Research) CS</td>
+            <td>160 credits / 4 yrs</td>
+            <td>Research-first UG; thesis compulsory; interdisciplinary science-engineering bridge</td>
+            <td style="color:var(--success)">✓ Research thesis in B.Sc (Hons)</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">U. of Waterloo</td>
+            <td><span class="tier-badge tier-3">QS Top 150</span></td>
+            <td>BCS + Quantum</td>
+            <td>40 courses / 4 yrs</td>
+            <td>IQC — Institute for Quantum Computing; 29 faculty, 300 researchers; co-op internship mandatory</td>
+            <td style="color:var(--success)">✓ Mandatory industry co-op model</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">CMU</td>
+            <td><span class="tier-badge tier-2">QS Top 50</span></td>
+            <td>B.Sc AI / CS</td>
+            <td>360 units / 4 yrs</td>
+            <td>Separate AI degree since 2018; ethics in AI as core; human-AI interaction track</td>
+            <td style="color:var(--success)">✓ AI Ethics core, HCI track</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOLS OVERVIEW -->
+<section id="schools">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">Academic Structure</div>
+      <h2 class="section-title">Five Schools of Excellence</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div class="schools-grid aos" style="transition-delay:0.1s">
+      <div class="school-card school-featured">
+        <div class="school-icon" style="background:rgba(0, 168, 89, 0.1)">🧠</div>
+        <h3>School of Computing, AI & Emerging Technologies</h3>
+        <p>Quantum computing, AI systems, cybersecurity, data intelligence and next-generation software engineering — benchmarked against global top-10 CS programmes.</p>
+        <div class="school-count">27 Programmes + 11 New Proposed</div>
+      </div>
+      <div class="school-card">
+        <div class="school-icon" style="background:rgba(201,162,39,0.1)">⚙️</div>
+        <h3>School of Engineering & Applied Technologies</h3>
+        <p>Mechanical, Civil, ECE, Chemical, Biotechnology, Mechatronics, Robotics, Food Tech, Electric Vehicle — 9 flagship B.Tech programmes.</p>
+        <div class="school-count">9 Programmes</div>
+      </div>
+      <div class="school-card">
+        <div class="school-icon" style="background:rgba(124,58,237,0.1)">📊</div>
+        <h3>School of Business & Commerce</h3>
+        <p>AI-integrated accounting, international business, CA training, fintech and professional specialisations — India's most contemporary commerce school.</p>
+        <div class="school-count">36 Programmes</div>
+      </div>
+      <div class="school-card">
+        <div class="school-icon" style="background:rgba(239,68,68,0.1)">🎨</div>
+        <h3>School of Design, Media & Performing Arts</h3>
+        <p>Fashion technology, AI-ready animation, digital media, film production, theatre, dance and music — redefining creative education.</p>
+        <div class="school-count">9 Programmes</div>
+      </div>
+      <div class="school-card">
+        <div class="school-icon" style="background:rgba(34,197,94,0.1)">🔬</div>
+        <h3>School of Liberal Arts & Science</h3>
+        <p>Mathematics, Physics, English Literature, Public Administration — foundational disciplines with interdisciplinary research bridges.</p>
+        <div class="school-count">6 Programmes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME EXPLORER -->
+<section id="programmes">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">Programme Explorer</div>
+      <h2 class="section-title">Redesigned Programme Catalogue</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">All programmes redesigned after benchmarking against IITs, IIITs, NUS and global universities. New names reflect contemporary specialisations aligned with industry and research frontier.</p>
+    </div>
+    <div class="filter-bar aos" id="filterBar">
+      <button class="filter-btn active" onclick="filterProgs(this,'all')">All Programmes</button>
+      <button class="filter-btn" onclick="filterProgs(this,'btech')">B.Tech</button>
+      <button class="filter-btn" onclick="filterProgs(this,'bsc')">B.Sc.</button>
+      <button class="filter-btn" onclick="filterProgs(this,'msc')">M.Sc.</button>
+      <button class="filter-btn" onclick="filterProgs(this,'int')">Integrated 5-Year</button>
+      <button class="filter-btn" onclick="filterProgs(this,'pgd')">PG Diploma</button>
+      <button class="filter-btn" onclick="filterProgs(this,'cert')">Certificate</button>
+      <button class="filter-btn" onclick="filterProgs(this,'quantum')">Quantum Track</button>
+      <button class="filter-btn" onclick="filterProgs(this,'new')">✦ New 2026</button>
+    </div>
+    <div class="prog-grid" id="progGrid">
+      <!-- B.Tech Programmes -->
+      <div class="prog-card" data-cat="btech">
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>Cognitive Systems &amp; AI Engineering (CSE)</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">AI Core</span><span class="prog-tag">Algorithms</span><span class="prog-tag">Systems Design</span><span class="prog-tag">Ethics in AI</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="btech quantum new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>Quantum Machine Intelligence &amp; Computing</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Quantum Circuits</span><span class="prog-tag">Qubits</span><span class="prog-tag">Shor / Grover</span><span class="prog-tag">Post-Quantum Crypto</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="btech new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>Intelligent Networks &amp; Cloud Systems (IT)</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">SDN</span><span class="prog-tag">Cloud Native</span><span class="prog-tag">5G / 6G</span><span class="prog-tag">Edge AI</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="btech">
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>AI &amp; Data Science Engineering</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Deep Learning</span><span class="prog-tag">MLOps</span><span class="prog-tag">GenAI</span><span class="prog-tag">Analytics</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="btech">
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>Cyber Defence &amp; Ethical Hacking (CSE)</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">SOC</span><span class="prog-tag">Penetration Testing</span><span class="prog-tag">Forensics</span><span class="prog-tag">Threat Intel</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="btech new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>Cloud-Native &amp; DevSecOps Engineering (CSE)</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Kubernetes</span><span class="prog-tag">CI/CD</span><span class="prog-tag">Platform Engineering</span><span class="prog-tag">FinOps</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="btech">
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>Immersive Technology &amp; Game Engineering</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">AR/VR/XR</span><span class="prog-tag">Unreal Engine</span><span class="prog-tag">Spatial Computing</span><span class="prog-tag">3D Graphics</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="btech">
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>Full Stack &amp; Product Engineering (CSE)</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">React / Next.js</span><span class="prog-tag">System Design</span><span class="prog-tag">Microservices</span><span class="prog-tag">Product Mgmt</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="btech quantum new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-btech">B.Tech</span></div>
+        </div>
+        <h4>Mathematics &amp; Computational Intelligence</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>160</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Number Theory</span><span class="prog-tag">Cryptography</span><span class="prog-tag">Optimisation</span><span class="prog-tag">Statistical ML</span>
+        </div>
+      </div>
+      <!-- B.Sc Programmes -->
+      <div class="prog-card" data-cat="bsc new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-bsc">B.Sc (Hons)</span></div>
+        </div>
+        <h4>Artificial Intelligence &amp; Cognitive Systems</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>3 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>120</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">NLP</span><span class="prog-tag">Computer Vision</span><span class="prog-tag">Reinforcement Learning</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="bsc quantum new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-bsc">B.Sc (Hons)</span></div>
+        </div>
+        <h4>Quantum Information Science &amp; Technology</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>3 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>120</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Qubit Architecture</span><span class="prog-tag">Quantum Error Correction</span><span class="prog-tag">QASM</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="bsc">
+        <div class="prog-card-head">
+          <div><span class="prog-level level-bsc">B.Sc</span></div>
+        </div>
+        <h4>Data Intelligence &amp; Business Analytics</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>3 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>120</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Power BI</span><span class="prog-tag">Python Analytics</span><span class="prog-tag">SQL / NoSQL</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="bsc">
+        <div class="prog-card-head">
+          <div><span class="prog-level level-bsc">B.Sc</span></div>
+        </div>
+        <h4>Digital Forensics &amp; Cyber Threat Intelligence</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>3 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>120</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Malware Analysis</span><span class="prog-tag">OSINT</span><span class="prog-tag">Incident Response</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="bsc new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-bsc">B.Sc</span></div>
+        </div>
+        <h4>Generative AI &amp; Creative Technology</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>3 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>120</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">LLMs</span><span class="prog-tag">Diffusion Models</span><span class="prog-tag">Prompt Engineering</span>
+        </div>
+      </div>
+      <!-- M.Sc Programmes -->
+      <div class="prog-card" data-cat="msc new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-msc">M.Sc</span></div>
+        </div>
+        <h4>Advanced AI Systems Engineering</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>2 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>60</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Foundation Models</span><span class="prog-tag">AI Infrastructure</span><span class="prog-tag">Research Thesis</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="msc quantum new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-msc">M.Sc</span></div>
+        </div>
+        <h4>Quantum Computing &amp; Post-Quantum Cryptography</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>2 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>60</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Quantum Algorithms</span><span class="prog-tag">NIST PQC</span><span class="prog-tag">Quantum Hardware</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="msc">
+        <div class="prog-card-head">
+          <div><span class="prog-level level-msc">M.Sc</span></div>
+        </div>
+        <h4>Data Science, AI &amp; Business Analytics</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>2 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>60</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Causal ML</span><span class="prog-tag">Time Series</span><span class="prog-tag">Decision Intelligence</span>
+        </div>
+      </div>
+      <!-- Integrated -->
+      <div class="prog-card" data-cat="int quantum new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-int">5-Year Integrated</span></div>
+        </div>
+        <h4>B.Tech + M.Tech: Quantum Computing &amp; Information Science</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>5 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>220</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Dual Degree</span><span class="prog-tag">Research Track</span><span class="prog-tag">Thesis</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="int new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-int">5-Year Integrated</span></div>
+        </div>
+        <h4>B.Tech + M.Tech: AI Systems Engineering</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>5 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>220</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Dual Degree</span><span class="prog-tag">AGI Research</span><span class="prog-tag">Industry Project</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="int new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-int">5-Year Integrated</span></div>
+        </div>
+        <h4>B.Sc + M.Sc: Data Intelligence &amp; Cognitive Analytics</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>5 Years</span></div>
+          <div class="prog-meta-item">Credits: <span>180</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Dual Degree</span><span class="prog-tag">Industry Immersion</span>
+        </div>
+      </div>
+      <!-- PG Diplomas -->
+      <div class="prog-card" data-cat="pgd new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-pgd">PG Diploma</span></div>
+        </div>
+        <h4>Applied AI &amp; Generative Systems</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>1 Year</span></div>
+          <div class="prog-meta-item">Credits: <span>36</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">ABC Eligible</span><span class="prog-tag">Hybrid Mode</span><span class="prog-tag">Industry Mentored</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="pgd quantum new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-pgd">PG Diploma</span></div>
+        </div>
+        <h4>Quantum Computing Foundations &amp; Applications</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>1 Year</span></div>
+          <div class="prog-meta-item">Credits: <span>36</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">ABC Eligible</span><span class="prog-tag">IBM Qiskit</span><span class="prog-tag">Research Oriented</span>
+        </div>
+      </div>
+      <!-- Certificates -->
+      <div class="prog-card" data-cat="cert new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-cert">Certificate</span></div>
+        </div>
+        <h4>Certified AI Engineer (CAIE)</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>6 Months</span></div>
+          <div class="prog-meta-item">Credits: <span>30</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Self-Paced</span><span class="prog-tag">ABC Credit</span><span class="prog-tag">Industry Badge</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="cert quantum new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-cert">Certificate</span></div>
+        </div>
+        <h4>Certified Quantum Developer (CQD)</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Months</span></div>
+          <div class="prog-meta-item">Credits: <span>24</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Self-Paced</span><span class="prog-tag">IBM Qiskit</span><span class="prog-tag">Google Cirq</span>
+        </div>
+      </div>
+      <div class="prog-card" data-cat="cert new">
+        <div class="prog-new">NEW</div>
+        <div class="prog-card-head">
+          <div><span class="prog-level level-cert">Certificate</span></div>
+        </div>
+        <h4>Certified Cybersecurity Analyst (CCSA)</h4>
+        <div class="prog-card-meta">
+          <div class="prog-meta-item">Duration: <span>4 Months</span></div>
+          <div class="prog-meta-item">Credits: <span>24</span></div>
+        </div>
+        <div class="prog-tags">
+          <span class="prog-tag">Self-Paced</span><span class="prog-tag">CompTIA Aligned</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM DEEP DIVE -->
+<section id="deepdive">
+  <div class="container">
+    <div class="deepdive-header">
+      <div class="aos">
+        <div class="deepdive-badge">Featured Programme</div>
+        <div class="section-tag">Curriculum Architecture</div>
+        <h2 class="section-title">B.Tech Cognitive Systems &amp; AI Engineering (CSE)</h2>
+        <div class="divider-line"></div>
+        <p class="section-sub">Redesigned from ground up. IIT Madras credit taxonomy + IIIT-H EECS model + NUS portfolio system + MIT Quantum thread. 160 credits across 8 semesters with multiple exit points.</p>
+        <div class="curriculum-tabs" style="margin-top:1.5rem">
+          <button class="tab-btn active" onclick="showTab('sem12')">Year 1</button>
+          <button class="tab-btn" onclick="showTab('sem34')">Year 2</button>
+          <button class="tab-btn" onclick="showTab('sem56')">Year 3</button>
+          <button class="tab-btn" onclick="showTab('sem78')">Year 4</button>
+        </div>
+
+        <div class="tab-content active" id="sem12">
+          <div class="sem-grid">
+            <div class="sem-block">
+              <h5>Semester 1 <span style="color:var(--text-muted);font-weight:400">20 credits</span></h5>
+              <div class="course-row"><span class="course-name">Computational Thinking &amp; Python</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Linear Algebra for AI</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Digital Electronics &amp; Logic Design</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Communication &amp; Critical Thinking</span><span class="course-credit">3cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">IT Workshop I — Dev Environment</span><span class="course-credit">3cr</span><span class="course-type ct-lab">Lab</span></div>
+              <div class="course-row"><span class="course-name">Environmental Science</span><span class="course-credit">2cr</span><span class="course-type ct-skill">Skill</span></div>
+            </div>
+            <div class="sem-block">
+              <h5>Semester 2 <span style="color:var(--text-muted);font-weight:400">20 credits</span></h5>
+              <div class="course-row"><span class="course-name">Data Structures &amp; Algorithms</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Discrete Mathematics for CS</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Probability &amp; Statistical Inference</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Object-Oriented Programming (Java)</span><span class="course-credit">3cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">IT Workshop II — Cloud Basics</span><span class="course-credit">3cr</span><span class="course-type ct-lab">Lab</span></div>
+              <div class="course-row"><span class="course-name">Psychology of Human-Tech Interaction</span><span class="course-credit">2cr</span><span class="course-type ct-skill">Skill</span></div>
+            </div>
+          </div>
+          <div style="margin-top:0.75rem;padding:0.75rem 1rem;background:rgba(201,162,39,0.06);border-radius:6px;font-size:12px;color:var(--text-muted)">
+            <strong style="color:var(--gold)">Exit Point 1 (40 cr):</strong> Certificate in Computing Foundations — eligible for ABC credit transfer
+          </div>
+        </div>
+
+        <div class="tab-content" id="sem34">
+          <div class="sem-grid">
+            <div class="sem-block">
+              <h5>Semester 3 <span style="color:var(--text-muted);font-weight:400">22 credits</span></h5>
+              <div class="course-row"><span class="course-name">Design &amp; Analysis of Algorithms</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Computer Organisation &amp; Architecture</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Machine Learning Foundations</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Database Systems &amp; SQL</span><span class="course-credit">3cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Signals, Systems &amp; Embedded Design</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Open Elective I</span><span class="course-credit">3cr</span><span class="course-type ct-elec">Elec</span></div>
+            </div>
+            <div class="sem-block">
+              <h5>Semester 4 <span style="color:var(--text-muted);font-weight:400">22 credits</span></h5>
+              <div class="course-row"><span class="course-name">Operating Systems</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Computer Networks</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Deep Learning &amp; Neural Architectures</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Introduction to Quantum Computing</span><span class="course-credit">3cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">AI Ethics &amp; Responsible Technology</span><span class="course-credit">3cr</span><span class="course-type ct-skill">Skill</span></div>
+              <div class="course-row"><span class="course-name">Breadth Elective I</span><span class="course-credit">4cr</span><span class="course-type ct-elec">Elec</span></div>
+            </div>
+          </div>
+          <div style="margin-top:0.75rem;padding:0.75rem 1rem;background:rgba(201,162,39,0.06);border-radius:6px;font-size:12px;color:var(--text-muted)">
+            <strong style="color:var(--gold)">Exit Point 2 (84 cr):</strong> Diploma in Computer Science — ABC credit bank eligible
+          </div>
+        </div>
+
+        <div class="tab-content" id="sem56">
+          <div class="sem-grid">
+            <div class="sem-block">
+              <h5>Semester 5 <span style="color:var(--text-muted);font-weight:400">22 credits</span></h5>
+              <div class="course-row"><span class="course-name">Theory of Computation &amp; Compilers</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Specialisation Core I <em style="color:var(--teal)">(FSS)</em></span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Specialisation Core II <em style="color:var(--teal)">(FSS)</em></span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Software Engineering &amp; Agile</span><span class="course-credit">3cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Departmental Elective I</span><span class="course-credit">4cr</span><span class="course-type ct-elec">Elec</span></div>
+              <div class="course-row"><span class="course-name">Industry Internship (6 weeks)</span><span class="course-credit">3cr</span><span class="course-type ct-proj">Proj</span></div>
+            </div>
+            <div class="sem-block">
+              <h5>Semester 6 <span style="color:var(--text-muted);font-weight:400">22 credits</span></h5>
+              <div class="course-row"><span class="course-name">Specialisation Core III <em style="color:var(--teal)">(FSS)</em></span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Distributed Systems &amp; DevOps</span><span class="course-credit">4cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Security in Computing Systems</span><span class="course-credit">3cr</span><span class="course-type ct-core">Core</span></div>
+              <div class="course-row"><span class="course-name">Research Methods &amp; Technical Writing</span><span class="course-credit">3cr</span><span class="course-type ct-skill">Skill</span></div>
+              <div class="course-row"><span class="course-name">Departmental Elective II</span><span class="course-credit">4cr</span><span class="course-type ct-elec">Elec</span></div>
+              <div class="course-row"><span class="course-name">Open Elective II</span><span class="course-credit">4cr</span><span class="course-type ct-elec">Elec</span></div>
+            </div>
+          </div>
+          <div style="margin-top:0.75rem;padding:0.75rem 1rem;background:rgba(0, 168, 89, 0.06);border:1px solid rgba(0, 168, 89, 0.12);border-radius:6px;font-size:12px;color:var(--text-muted)">
+            <strong style="color:var(--teal)">FSS = Flexible Specialisation System</strong> — Students lock into one of 6 specialisation tracks: Quantum / AI / Cybersecurity / Cloud / Immersive Tech / Full Stack
+          </div>
+        </div>
+
+        <div class="tab-content" id="sem78">
+          <div class="sem-grid">
+            <div class="sem-block">
+              <h5>Semester 7 <span style="color:var(--text-muted);font-weight:400">22 credits</span></h5>
+              <div class="course-row"><span class="course-name">Specialisation Elective I</span><span class="course-credit">4cr</span><span class="course-type ct-elec">Elec</span></div>
+              <div class="course-row"><span class="course-name">Specialisation Elective II</span><span class="course-credit">4cr</span><span class="course-type ct-elec">Elec</span></div>
+              <div class="course-row"><span class="course-name">Entrepreneurship &amp; Innovation</span><span class="course-credit">3cr</span><span class="course-type ct-skill">Skill</span></div>
+              <div class="course-row"><span class="course-name">Capstone Project Phase I</span><span class="course-credit">6cr</span><span class="course-type ct-proj">Proj</span></div>
+              <div class="course-row"><span class="course-name">Open Elective III</span><span class="course-credit">3cr</span><span class="course-type ct-elec">Elec</span></div>
+              <div class="course-row"><span class="course-name">Emerging Tech Seminar</span><span class="course-credit">2cr</span><span class="course-type ct-skill">Skill</span></div>
+            </div>
+            <div class="sem-block">
+              <h5>Semester 8 <span style="color:var(--text-muted);font-weight:400">20 credits</span></h5>
+              <div class="course-row"><span class="course-name">Capstone Project Phase II &amp; Demo</span><span class="course-credit">10cr</span><span class="course-type ct-proj">Proj</span></div>
+              <div class="course-row"><span class="course-name">Industry Immersion / Thesis</span><span class="course-credit">6cr</span><span class="course-type ct-proj">Proj</span></div>
+              <div class="course-row"><span class="course-name">Advanced Elective (PG-level)</span><span class="course-credit">4cr</span><span class="course-type ct-elec">Elec</span></div>
+            </div>
+          </div>
+          <div style="margin-top:0.75rem;padding:0.75rem 1rem;background:rgba(34,197,94,0.06);border-radius:6px;font-size:12px;color:var(--text-muted)">
+            <strong style="color:#4ade80">Exit Point 3 (160 cr):</strong> Full B.Tech Degree with Specialisation — Industry certifications mapped throughout
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card aos" style="transition-delay:0.2s">
+        <h4>Programme At a Glance</h4>
+        <div class="info-row"><span class="info-label">Degree</span><span class="info-val">B.Tech (CSE)</span></div>
+        <div class="info-row"><span class="info-label">Duration</span><span class="info-val">4 Years / 8 Sems</span></div>
+        <div class="info-row"><span class="info-label">Total Credits</span><span class="info-val">160</span></div>
+        <div class="info-row"><span class="info-label">Core Credits</span><span class="info-val">80 (50%)</span></div>
+        <div class="info-row"><span class="info-label">Elective Credits</span><span class="info-val">40 (25%)</span></div>
+        <div class="info-row"><span class="info-label">Skill / Vocational</span><span class="info-val">24 (15%)</span></div>
+        <div class="info-row"><span class="info-label">Research / Project</span><span class="info-val">16 (10%)</span></div>
+        <div class="info-row"><span class="info-label">Delivery Mode</span><span class="info-val">Blended + Hybrid</span></div>
+        <div class="info-row"><span class="info-label">ABC Eligible</span><span class="info-val">Yes — All credits</span></div>
+        <div style="margin-top:1.2rem">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:0.6rem">Industry Certifications Mapped</div>
+          <div class="cert-list">
+            <div class="cert-item"><div class="cert-dot"></div>AWS Certified Solutions Architect</div>
+            <div class="cert-item"><div class="cert-dot"></div>Google Professional ML Engineer</div>
+            <div class="cert-item"><div class="cert-dot"></div>Microsoft Azure AI Engineer</div>
+            <div class="cert-item"><div class="cert-dot"></div>IBM Qiskit Developer (Quantum)</div>
+            <div class="cert-item"><div class="cert-dot"></div>CompTIA Security+</div>
+            <div class="cert-item"><div class="cert-dot"></div>Oracle Java SE Certified</div>
+          </div>
+        </div>
+        <div style="margin-top:1.2rem">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:0.6rem">Career Pathways</div>
+          <div class="career-tags">
+            <span class="career-tag">ML Engineer</span>
+            <span class="career-tag">Quantum Developer</span>
+            <span class="career-tag">AI Researcher</span>
+            <span class="career-tag">Platform Engineer</span>
+            <span class="career-tag">Cybersecurity Analyst</span>
+            <span class="career-tag">PhD (IIT / NUS)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUANTUM STREAM -->
+<section id="quantum">
+  <div class="container">
+    <div class="quantum-grid">
+      <div class="aos">
+        <div class="section-tag">Quantum Computing Track</div>
+        <h2 class="section-title">India's First Undergraduate<br><em style="color:var(--teal)">Quantum-Native</em> Programme</h2>
+        <div class="divider-line" style="background:var(--teal)"></div>
+        <p class="section-sub">Modelled on MIT's 18.435J Quantum Computation and Stanford's three-track quantum pathway (Algorithms, Hardware, Theory). India-first implementation at the undergraduate level.</p>
+        <div style="margin-top:2rem">
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:1rem">Our Quantum stream covers three pathways:</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem">
+            <div style="background:rgba(0, 168, 89, 0.08);border:1px solid rgba(0, 168, 89, 0.2);border-radius:6px;padding:0.75rem;text-align:center">
+              <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:4px">TRACK A</div>
+              <div style="font-size:12px;color:var(--text)">Quantum<br>Algorithms</div>
+            </div>
+            <div style="background:rgba(0, 168, 89, 0.08);border:1px solid rgba(0, 168, 89, 0.2);border-radius:6px;padding:0.75rem;text-align:center">
+              <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:4px">TRACK B</div>
+              <div style="font-size:12px;color:var(--text)">Quantum<br>Hardware</div>
+            </div>
+            <div style="background:rgba(0, 168, 89, 0.08);border:1px solid rgba(0, 168, 89, 0.2);border-radius:6px;padding:0.75rem;text-align:center">
+              <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:4px">TRACK C</div>
+              <div style="font-size:12px;color:var(--text)">Quantum<br>Theory</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="quantum-viz aos" style="transition-delay:0.15s">
+        <div style="font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem">Quantum Curriculum Roadmap</div>
+        <div class="q-node">
+          <div class="q-circle">Q1</div>
+          <div class="q-info">
+            <h5>Physics of Information &amp; Qubit Fundamentals</h5>
+            <p>Superposition, entanglement, Bloch sphere, quantum gates</p>
+          </div>
+          <div class="q-semester">Sem 4</div>
+        </div>
+        <div class="q-node">
+          <div class="q-circle">Q2</div>
+          <div class="q-info">
+            <h5>Quantum Circuit Design &amp; QASM Programming</h5>
+            <p>IBM Qiskit, Google Cirq, circuit simulation</p>
+          </div>
+          <div class="q-semester">Sem 5</div>
+        </div>
+        <div class="q-node">
+          <div class="q-circle">Q3</div>
+          <div class="q-info">
+            <h5>Quantum Algorithms</h5>
+            <p>Shor's factoring, Grover's search, QAOA, VQE</p>
+          </div>
+          <div class="q-semester">Sem 5</div>
+        </div>
+        <div class="q-node">
+          <div class="q-circle">Q4</div>
+          <div class="q-info">
+            <h5>Quantum Error Correction &amp; Fault Tolerance</h5>
+            <p>Stabilizer codes, surface codes, threshold theorems</p>
+          </div>
+          <div class="q-semester">Sem 6</div>
+        </div>
+        <div class="q-node">
+          <div class="q-circle">Q5</div>
+          <div class="q-info">
+            <h5>Post-Quantum Cryptography (NIST PQC)</h5>
+            <p>CRYSTALS-Kyber, CRYSTALS-Dilithium, FALCON</p>
+          </div>
+          <div class="q-semester">Sem 6</div>
+        </div>
+        <div class="q-node">
+          <div class="q-circle">Q6</div>
+          <div class="q-info">
+            <h5>Quantum Machine Learning &amp; Optimisation</h5>
+            <p>QML models, quantum kernel methods, hybrid classical-quantum</p>
+          </div>
+          <div class="q-semester">Sem 7</div>
+        </div>
+        <div class="q-node">
+          <div class="q-circle">Q7</div>
+          <div class="q-info">
+            <h5>Quantum Hardware Architectures</h5>
+            <p>Trapped ions, superconducting qubits, photonic systems</p>
+          </div>
+          <div class="q-semester">Sem 7</div>
+        </div>
+        <div class="q-node" style="border-bottom:none">
+          <div class="q-circle" style="border-color:var(--gold);color:var(--gold)">Q8</div>
+          <div class="q-info">
+            <h5>Quantum Capstone Project / Thesis</h5>
+            <p>Real quantum hardware access via IBM Quantum Network</p>
+          </div>
+          <div class="q-semester" style="color:var(--gold)">Sem 8</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEP CREDIT BANK -->
+<section id="nep">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">NEP 2020 Compliance</div>
+      <h2 class="section-title">Academic Credit Bank Architecture</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">Fully aligned with UGC National Credit Framework (NCrF), Academic Bank of Credits (ABC), and NEP 2020 Multiple Entry / Exit provisions.</p>
+    </div>
+    <div class="nep-grid" style="margin-top:3rem">
+      <div class="credit-visual aos">
+        <h4>B.Tech Credit Distribution (160 Credits)</h4>
+        <div class="credit-bar">
+          <div class="credit-bar-label"><span>Programme Core</span><span>80 credits</span></div>
+          <div class="credit-track"><div class="credit-fill" style="width:50%;background:var(--teal)"></div></div>
+        </div>
+        <div class="credit-bar">
+          <div class="credit-bar-label"><span>Departmental Electives</span><span>24 credits</span></div>
+          <div class="credit-track"><div class="credit-fill" style="width:15%;background:#a78bfa"></div></div>
+        </div>
+        <div class="credit-bar">
+          <div class="credit-bar-label"><span>Open Electives</span><span>16 credits</span></div>
+          <div class="credit-track"><div class="credit-fill" style="width:10%;background:#7c3aed"></div></div>
+        </div>
+        <div class="credit-bar">
+          <div class="credit-bar-label"><span>Skill / Vocational</span><span>24 credits</span></div>
+          <div class="credit-track"><div class="credit-fill" style="width:15%;background:#fb923c"></div></div>
+        </div>
+        <div class="credit-bar">
+          <div class="credit-bar-label"><span>Research / Project / Thesis</span><span>16 credits</span></div>
+          <div class="credit-track"><div class="credit-fill" style="width:10%;background:var(--gold)"></div></div>
+        </div>
+        <div class="exit-points">
+          <div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">Multiple Exit Points — NEP 2020</div>
+          <div class="exit-point">
+            <div class="exit-num" style="background:rgba(251,146,60,0.1);color:#fb923c;border:2px solid #fb923c">40</div>
+            <div class="exit-info">
+              <h5>Certificate in Computing Foundations</h5>
+              <p>After Year 1 — ABC credit eligible, re-entry permitted anytime</p>
+            </div>
+          </div>
+          <div class="exit-point">
+            <div class="exit-num" style="background:rgba(124,58,237,0.1);color:#a78bfa;border:2px solid #a78bfa">80</div>
+            <div class="exit-info">
+              <h5>Diploma in Computer Science</h5>
+              <p>After Year 2 — full credit portability to other ABC-registered institutions</p>
+            </div>
+          </div>
+          <div class="exit-point">
+            <div class="exit-num" style="background:rgba(0, 168, 89, 0.1);color:var(--teal);border:2px solid var(--teal)">120</div>
+            <div class="exit-info">
+              <h5>B.Sc. (Hons) in Computer Science</h5>
+              <p>After Year 3 — equivalent to a full BSc Honours degree</p>
+            </div>
+          </div>
+          <div class="exit-point">
+            <div class="exit-num" style="background:rgba(201,162,39,0.1);color:var(--gold);border:2px solid var(--gold)">160</div>
+            <div class="exit-info">
+              <h5>B.Tech in CSE with Specialisation</h5>
+              <p>Full degree — industry certifications embedded throughout</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="aos" style="transition-delay:0.15s">
+        <div class="credit-visual">
+          <h4>Self-Paced &amp; Blended Learning Framework</h4>
+          <div style="display:grid;gap:0.75rem;margin-top:0.5rem">
+            <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-light);border-radius:6px;padding:1rem">
+              <div style="font-size:12px;font-weight:600;color:var(--teal);margin-bottom:4px">Online (SWAYAM/NPTEL)</div>
+              <p style="font-size:12px;color:var(--text-muted)">Up to 30% of elective credits may be completed via NPTEL/SWAYAM certified MOOCs — fully recognised under ABC.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-light);border-radius:6px;padding:1rem">
+              <div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px">Hybrid Classroom</div>
+              <p style="font-size:12px;color:var(--text-muted)">Core courses use flipped classroom model — recorded lectures + live problem-solving sessions. Attendance policy 60% for hybrid students.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-light);border-radius:6px;padding:1rem">
+              <div style="font-size:12px;font-weight:600;color:#a78bfa;margin-bottom:4px">Industry Co-op (Waterloo Model)</div>
+              <p style="font-size:12px;color:var(--text-muted)">Mandatory 6-week industry immersion in Semester 5. 12-week optional co-op in Semester 7 with partner companies (Amazon, Infosys, ISRO, IBM Quantum).</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-light);border-radius:6px;padding:1rem">
+              <div style="font-size:12px;font-weight:600;color:#4ade80;margin-bottom:4px">Credit Transfer &amp; ABC</div>
+              <p style="font-size:12px;color:var(--text-muted)">All earned credits stored in Academic Bank of Credits (DigiLocker-linked). Students may transfer credits to/from any ABC-registered Indian university.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;background:rgba(201,162,39,0.05);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
+          <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">NCrF Level Mapping</div>
+          <div style="display:grid;gap:0.5rem">
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-muted)">Certificate (40 cr)</span><span style="color:var(--text)">NCrF Level 5.0</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-muted)">Diploma (80 cr)</span><span style="color:var(--text)">NCrF Level 5.5</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-muted)">B.Sc. Hons (120 cr)</span><span style="color:var(--text)">NCrF Level 6.0</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-muted)">B.Tech (160 cr)</span><span style="color:var(--text)">NCrF Level 6.5</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-muted)">M.Sc. / M.Tech (60 cr)</span><span style="color:var(--text)">NCrF Level 7.0</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0"><span style="color:var(--text-muted)">Ph.D.</span><span style="color:var(--text)">NCrF Level 8.0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENCHMARK INSIGHTS -->
+<section id="insights">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">What We Borrowed &amp; Improved</div>
+      <h2 class="section-title">Intelligence Adopted from Global Best</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div class="insight-grid">
+      <div class="insight-card aos">
+        <div class="insight-source">IIT Madras</div>
+        <h4>S/E/H/P/F Credit Classification</h4>
+        <p>Science, Engineering, Humanities, Professional, Free elective credit taxonomy. Ensures holistic education beyond pure CS.</p>
+        <div class="insight-adopted">✓ Adopted: Core / Skill / Elective / Research taxonomy</div>
+      </div>
+      <div class="insight-card aos" style="transition-delay:0.05s">
+        <div class="insight-source">IIIT Hyderabad</div>
+        <h4>IT Workshops from Semester 1</h4>
+        <p>Industry-ready tech workshops embedded from the very first semester so students master current software tools early.</p>
+        <div class="insight-adopted">✓ Adopted: IT Workshop I &amp; II in Semesters 1–2</div>
+      </div>
+      <div class="insight-card aos" style="transition-delay:0.1s">
+        <div class="insight-source">IIIT Hyderabad</div>
+        <h4>Research Exposure from Year 1</h4>
+        <p>Students enter research labs as early as Year 1, turning undergrad into a research-practitioner rather than just a learner.</p>
+        <div class="insight-adopted">✓ Adopted: Emerging Tech Seminar + Thesis in B.Sc Hons</div>
+      </div>
+      <div class="insight-card aos" style="transition-delay:0.05s">
+        <div class="insight-source">IIT Bombay</div>
+        <h4>Lean Core + Maximum Elective Flexibility</h4>
+        <p>Only essential courses are mandatory. Students fill 40% of their credits with free and departmental electives of their choice.</p>
+        <div class="insight-adopted">✓ Adopted: 25% open + departmental elective credits</div>
+      </div>
+      <div class="insight-card aos" style="transition-delay:0.1s">
+        <div class="insight-source">NUS Singapore</div>
+        <h4>Common Pool Admission + Late Specialisation</h4>
+        <p>All CS/AI students share a common first two years, then differentiate. Prevents wrong-branch regret at admission time.</p>
+        <div class="insight-adopted">✓ Adopted: FSS — Flexible Specialisation from Sem 5</div>
+      </div>
+      <div class="insight-card aos" style="transition-delay:0.15s">
+        <div class="insight-source">MIT + Stanford</div>
+        <h4>Quantum Computing as Core Subject</h4>
+        <p>MIT's 18.435J and Stanford's CS259Q are flagship quantum courses. We make Quantum Computing a mandatory core from Sem 4.</p>
+        <div class="insight-adopted">✓ Adopted: Quantum Computing core + 3-track advanced pathway</div>
+      </div>
+      <div class="insight-card aos">
+        <div class="insight-source">CMU</div>
+        <h4>AI Ethics as a Core Course</h4>
+        <p>Carnegie Mellon introduced a standalone AI degree in 2018 with ethics as a foundational requirement. We follow suit.</p>
+        <div class="insight-adopted">✓ Adopted: AI Ethics &amp; Responsible Technology (Sem 4, 3cr)</div>
+      </div>
+      <div class="insight-card aos" style="transition-delay:0.05s">
+        <div class="insight-source">University of Waterloo</div>
+        <h4>Mandatory Industry Co-op Semester</h4>
+        <p>Waterloo's world-famous co-op programme ensures every graduate has verified industry experience before degree completion.</p>
+        <div class="insight-adopted">✓ Adopted: 6-wk mandatory + 12-wk optional co-op</div>
+      </div>
+      <div class="insight-card aos" style="transition-delay:0.1s">
+        <div class="insight-source">IISc Bangalore</div>
+        <h4>Research Thesis in Undergraduate</h4>
+        <p>IISc's B.Sc Research programme makes undergraduate thesis compulsory. We replicate this for the B.Sc (Hons) exit.</p>
+        <div class="insight-adopted">✓ Adopted: 6-credit thesis in B.Sc Hons exit (Year 3)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LABS -->
+<section id="labs">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">Advanced Infrastructure</div>
+      <h2 class="section-title">Proposed Advanced Laboratories &amp; Delivery</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">World-class physical and virtual labs designed for hands-on learning in AI, quantum computing, cybersecurity, immersive tech and data intelligence.</p>
+    </div>
+    <div class="labs-grid">
+      <div class="lab-card aos" style="border-color:rgba(0, 168, 89, 0.2)">
+        <div class="lab-icon">⚛️</div>
+        <h4>Quantum Computing Sandbox Lab</h4>
+        <p>IBM Quantum Network access, Qiskit simulators, superconducting qubit emulators, quantum circuit design workstations. Physical hardware for trapped-ion simulation.</p>
+        <div class="lab-mode" style="color:var(--teal)">🔬 Physical + Cloud (IBM Quantum / AWS Braket)</div>
+      </div>
+      <div class="lab-card aos" style="border-color:rgba(201,162,39,0.2);transition-delay:0.05s">
+        <div class="lab-icon">🧠</div>
+        <h4>Generative AI &amp; Foundation Models Studio</h4>
+        <p>H100 GPU cluster, large model fine-tuning environment, RAG pipelines, LLM evaluation frameworks, ethical AI audit tools, multimodal AI workbenches.</p>
+        <div class="lab-mode" style="color:var(--gold)">💻 Physical + HPC Cloud (Google TPU / Azure)</div>
+      </div>
+      <div class="lab-card aos" style="border-color:rgba(239,68,68,0.2);transition-delay:0.1s">
+        <div class="lab-icon">🛡️</div>
+        <h4>Cybersecurity SOC &amp; Ethical Hacking Lab</h4>
+        <p>Live threat intelligence feeds, SIEM platforms, isolated attack-defence networks, malware sandbox, penetration testing infrastructure, digital forensics toolkit.</p>
+        <div class="lab-mode" style="color:#f87171">🔐 Physical — Air-gapped Network</div>
+      </div>
+      <div class="lab-card aos" style="border-color:rgba(124,58,237,0.2)">
+        <div class="lab-icon">🥽</div>
+        <h4>XR / Spatial Computing Studio</h4>
+        <p>Meta Quest Pro headsets, Apple Vision Pro developer units, Unreal Engine workstations, haptic feedback rigs, 3D photogrammetry booth, spatial audio labs.</p>
+        <div class="lab-mode" style="color:#a78bfa">🎨 Physical — Immersive Experience Suite</div>
+      </div>
+      <div class="lab-card aos" style="border-color:rgba(34,197,94,0.2);transition-delay:0.05s">
+        <div class="lab-icon">📊</div>
+        <h4>Data Intelligence &amp; Analytics Hub</h4>
+        <p>Real-time data pipeline infrastructure, Hadoop/Spark cluster, BI visualisation wall, streaming analytics platforms, data warehouse workbenches, KNIME / Tableau.</p>
+        <div class="lab-mode" style="color:#4ade80">🌐 Physical + Cloud (Databricks / Snowflake)</div>
+      </div>
+      <div class="lab-card aos" style="border-color:rgba(251,146,60,0.2);transition-delay:0.1s">
+        <div class="lab-icon">☁️</div>
+        <h4>Cloud-Native &amp; DevSecOps Lab</h4>
+        <p>Multi-cloud environment (AWS + GCP + Azure), Kubernetes clusters, CI/CD pipeline sandboxes, Infrastructure-as-Code labs, FinOps dashboards, chaos engineering tools.</p>
+        <div class="lab-mode" style="color:#fb923c">☁️ Virtual — Multi-Cloud Sandbox</div>
+      </div>
+      <div class="lab-card aos">
+        <div class="lab-icon">🤖</div>
+        <h4>Robotics &amp; Embedded AI Lab</h4>
+        <p>ROS2 robotic arms, edge AI accelerators (NVIDIA Jetson), autonomous vehicle simulation, drone swarm testbed, IoT sensor networks, embedded ML deployment.</p>
+        <div class="lab-mode" style="color:var(--text-muted)">🔧 Physical — Hardware Integration Lab</div>
+      </div>
+      <div class="lab-card aos" style="transition-delay:0.05s">
+        <div class="lab-icon">🎓</div>
+        <h4>Cognitive Classroom &amp; Smart Learning Hub</h4>
+        <p>AI-powered adaptive learning terminals, eye-tracking engagement monitors, peer collaboration pods, recording studio for flipped classroom content, live streaming for hybrid learners.</p>
+        <div class="lab-mode" style="color:var(--text-muted)">📡 Physical + Hybrid Streaming</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section id="faculty" style="padding:6rem 0">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">Academic Leadership</div>
+      <h2 class="section-title">Curriculum Intelligence</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub" style="margin-bottom:2.5rem">This entire curriculum architecture and academic programme suite was designed and intelligenced by our lead academic architect.</p>
+    </div>
+    <div class="faculty-card aos">
+      <div class="faculty-avatar"><img src="Prof.Anjit Raja R.png" alt="Prof. Anjit Raja R" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
+      <div class="faculty-info">
+        <h3>Prof. Anjit Raja R</h3>
+        <p>Lead Academic Architect &amp; Instructional Designer — Rathinam Global Deemed to be University, Coimbatore. Designed all 87+ programmes with a global benchmarking methodology spanning IITs, IIITs, NUS, MIT, Stanford, and CMU. Specialist in NEP 2020 implementation, quantum-ready curriculum design, and AI-native pedagogy.</p>
+        <a href="https://www.linkedin.com/in/profanjitraja/" target="_blank" class="faculty-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-3a2 2 0 100-4 2 2 0 000 4z"/></svg>
+          linkedin.com/in/profanjitraja ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section id="apply">
+  <div class="container">
+    <div class="apply-inner">
+      <div class="aos">
+        <div class="section-tag">Admissions 2026–27</div>
+        <h2 class="section-title">Begin Your Journey at<br>Rathinam Global</h2>
+        <div class="divider-line"></div>
+        <p class="section-sub">Applications are open for all programmes under all five schools for the academic year 2026–27. Explore the full programme catalogue and apply online.</p>
+        <div class="apply-form-row">
+          <div class="form-group">
+            <label>Programme of Interest</label>
+            <select>
+              <option>B.Tech Cognitive Systems &amp; AI Engineering</option>
+              <option>B.Tech Quantum Machine Intelligence</option>
+              <option>M.Sc Advanced AI Systems Engineering</option>
+              <option>M.Sc Quantum Computing &amp; PQC</option>
+              <option>5-Year Integrated (B.Tech + M.Tech)</option>
+              <option>PG Diploma in Applied AI</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mode of Study</label>
+            <select>
+              <option>Full-Time (On-Campus)</option>
+              <option>Hybrid (Blended)</option>
+              <option>Self-Paced (Online)</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem">
+          <a href="https://www.rathinam.global/#apply" target="_blank" class="btn-primary" style="display:inline-block">Apply Now at rathinam.global ↗</a>
+        </div>
+        <div style="margin-top:1.5rem;font-size:12px;color:var(--text-dim)">
+          Deemed University approved by UGC · All programmes NEP 2020 compliant · ABC credit eligible
+        </div>
+      </div>
+      <div class="apply-qr aos">
+        <div class="apply-qr-box">📱</div>
+        <div style="font-size:12px;color:var(--text-muted)">Scan to Apply</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:4px">rathinam.global</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #002244; color: #fff;">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem">
+          <div style="width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:14px;color:var(--navy)">RG</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text)">Rathinam Global Deemed to be University</div>
+        </div>
+        <p>Coimbatore, Tamil Nadu, India. A leading deemed university shaping quantum-ready, AI-native graduates for the world's most demanding technology careers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Computing School</h5>
+        <a href="#programmes">B.Tech Programmes</a>
+        <a href="#programmes">B.Sc Programmes</a>
+        <a href="#programmes">M.Sc Programmes</a>
+        <a href="#quantum">Quantum Track</a>
+        <a href="#integrated">Integrated Degrees</a>
+      </div>
+      <div class="footer-col">
+        <h5>Academic</h5>
+        <a href="#nep">NEP 2020 Framework</a>
+        <a href="#deepdive">Curriculum</a>
+        <a href="#labs">Laboratories</a>
+        <a href="#insights">Benchmarking</a>
+        <a href="#faculty">Faculty</a>
+      </div>
+      <div class="footer-col">
+        <h5>Apply</h5>
+        <a href="https://www.rathinam.global/#apply" target="_blank">Online Application ↗</a>
+        <a href="https://www.rathinam.global" target="_blank">Official Website ↗</a>
+        <a href="https://www.linkedin.com/in/profanjitraja/" target="_blank">Prof. Anjit Raja R ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026–2027 Rathinam Global Deemed to be University · All Rights Reserved</div>
+      <div>2026-2027 @ Programmes designed and Intelligence by <a href="https://www.linkedin.com/in/profanjitraja/" target="_blank">Prof. Anjit Raja R</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Filter programmes
+  function filterProgs(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.prog-card').forEach(card => {
+      if (cat === 'all') {
+        card.style.display = '';
+      } else {
+        const cats = card.dataset.cat || '';
+        card.style.display = cats.includes(cat) ? '' : 'none';
+      }
+    });
+  }
+
+  // Tab switcher
+  function showTab(id) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Animate on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.aos').forEach(el => observer.observe(el));
+
+  // Credit bar animation
+  const creditObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.credit-fill').forEach(bar => {
+          const w = bar.style.width;
+          bar.style.width = '0';
+          setTimeout(() => { bar.style.width = w; }, 200);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.credit-visual').forEach(el => creditObserver.observe(el));
+</script>
+</body>
+</html>
