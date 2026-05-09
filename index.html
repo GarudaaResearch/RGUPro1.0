@@ -11,17 +11,18 @@
     --navy2: #0B1224;
     --navy3: #101B36;
     /* Logo-aligned palette */
-    --gold: #10A4E8;            /* cyan/blue */
-    --gold-light: #39C3FF;      /* lighter cyan */
-    --gold-pale: rgba(16,164,232,0.14);
-    --teal: #A6C43A;            /* lime */
-    --teal-dark: #6F8D1F;       /* deep lime */
+    --gold: #F39A12;            /* orange (primary) */
+    --gold-light: #FFB445;      /* lighter orange */
+    --gold-pale: rgba(243,154,18,0.16);
+    --teal: #A6C43A;            /* light green (secondary) */
+    --teal-dark: #6F8D1F;       /* deep green */
     --accent-orange: #F39A12;   /* orange */
     --accent-purple: #7A2AA8;   /* purple */
+    --accent-cyan: #10A4E8;     /* cyan/blue (minor accent) */
     --text: #e9eef7;
     --text-muted: rgba(233,238,247,0.74);
     --text-dim: rgba(233,238,247,0.55);
-    --border: rgba(16,164,232,0.20);
+    --border: rgba(243,154,18,0.22);
     --border-light: rgba(255,255,255,0.07);
     --card-bg: rgba(13,23,48,0.75);
     --success: #22c55e;
@@ -32,9 +33,9 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: 'DM Sans', sans-serif;
-    background: radial-gradient(1200px 600px at 50% 0%, rgba(16,164,232,0.12), transparent 55%),
-                radial-gradient(900px 500px at 80% 30%, rgba(166,196,58,0.10), transparent 55%),
-                radial-gradient(750px 450px at 20% 35%, rgba(122,42,168,0.12), transparent 60%),
+    background: radial-gradient(1200px 600px at 50% 0%, rgba(243,154,18,0.12), transparent 55%),
+                radial-gradient(900px 500px at 80% 30%, rgba(166,196,58,0.12), transparent 55%),
+                radial-gradient(750px 450px at 20% 35%, rgba(16,164,232,0.10), transparent 60%),
                 linear-gradient(180deg, var(--navy) 0%, #05060c 100%);
     color: var(--text);
     overflow-x: hidden;
@@ -99,21 +100,21 @@
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(16,164,232,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(166,196,58,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(243,154,18,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(166,196,58,0.06) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .hero-glow {
     position: absolute;
     width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(16,164,232,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(243,154,18,0.12) 0%, transparent 70%);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
   }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(16,164,232,0.10);
+    background: rgba(166,196,58,0.10);
     border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     border-radius: 20px;
     padding: 6px 16px;
@@ -159,14 +160,14 @@
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
   .btn-outline {
     background: transparent;
-    border: 1px solid rgba(16,164,232,0.38);
+    border: 1px solid rgba(243,154,18,0.45);
     color: var(--gold);
     padding: 12px 28px; border-radius: 4px;
     font-size: 14px; font-weight: 500;
     text-decoration: none; transition: all 0.2s;
     cursor: pointer;
   }
-  .btn-outline:hover { border-color: var(--gold); background: rgba(16,164,232,0.12); }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(243,154,18,0.14); }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -292,7 +293,7 @@
     gap: 1.5rem;
     margin-top: 2rem;
   }
-  #assistant { padding: 6rem 0; background: linear-gradient(180deg, transparent 0%, rgba(16,164,232,0.05) 50%, transparent 100%); }
+  #assistant { padding: 6rem 0; background: linear-gradient(180deg, transparent 0%, rgba(166,196,58,0.05) 50%, transparent 100%); }
   .assistant-wrap { display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin-top: 2.5rem; }
   .assistant-box { padding: 1.2rem 1.2rem; }
   .assistant-head { display:flex; align-items:center; justify-content: space-between; gap: 1rem; }
@@ -348,7 +349,7 @@
     border-bottom: 1px solid var(--border);
     color: var(--gold); font-weight: 600; font-family: 'DM Sans', sans-serif;
     font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-    background: rgba(16,164,232,0.08);
+    background: rgba(243,154,18,0.10);
   }
   table.bench-table td { padding: 12px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
   table.bench-table tr:hover td { background: rgba(0,0,0,0.02); }
@@ -356,8 +357,8 @@
     display: inline-block; padding: 2px 8px; border-radius: 3px;
     font-size: 10px; font-weight: 600; letter-spacing: 0.05em;
   }
-  .tier-1 { background: rgba(16,164,232,0.18); color: var(--gold); }
-  .tier-2 { background: rgba(166,196,58,0.14); color: var(--teal); }
+  .tier-1 { background: rgba(243,154,18,0.18); color: var(--gold); }
+  .tier-2 { background: rgba(166,196,58,0.16); color: var(--teal); }
   .tier-3 { background: rgba(124,58,237,0.15); color: #a78bfa; }
   .gap-insight {
     background: rgba(166,196,58,0.06);
@@ -592,7 +593,7 @@
   .int-features li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
 
   /* ─── APPLY ─── */
-  #apply { padding: 6rem 0; background: linear-gradient(135deg, rgba(16,164,232,0.06) 0%, rgba(122,42,168,0.06) 100%); border-top: 1px solid var(--border); }
+  #apply { padding: 6rem 0; background: linear-gradient(135deg, rgba(166,196,58,0.06) 0%, rgba(243,154,18,0.07) 100%); border-top: 1px solid var(--border); }
   .apply-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
   .apply-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
   .form-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
@@ -622,7 +623,7 @@
   .footer-bottom a { color: var(--gold); text-decoration: none; }
 
   /* ─── QUANTUM SECTION ─── */
-  #quantum { padding: 6rem 0; background: linear-gradient(180deg, rgba(16,164,232,0.05) 0%, rgba(166,196,58,0.04) 100%); position: relative; overflow: hidden; }
+  #quantum { padding: 6rem 0; background: linear-gradient(180deg, rgba(166,196,58,0.05) 0%, rgba(243,154,18,0.05) 100%); position: relative; overflow: hidden; }
   #quantum::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(166,196,58,0.08), transparent 60%); pointer-events: none; }
   .quantum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .quantum-viz { background: var(--card-bg); border: 1px solid rgba(166,196,58,0.22); border-radius: 12px; padding: 2rem; }
