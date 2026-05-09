@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rathinam Global Deemed to be University | School of Computing, AI & Emerging Technologies</title>
+<title>RGU-PRO Advanced Research & Emerging Technology Labs | Rathinam Global Deemed to be University (RGU)</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #ffffff;
-    --navy2: #f4f7f6;
-    --navy3: #e2e8e4;
-    --gold: #005A9C;
-    --gold-light: #0073CF;
-    --gold-pale: #e6f0fa;
-    --teal: #00A859;
-    --teal-dark: #008040;
-    --text: #1a1a1a;
-    --text-muted: #555555;
-    --text-dim: #777777;
-    --border: rgba(0, 90, 156, 0.15);
-    --border-light: rgba(0,0,0,0.05);
-    --card-bg: #ffffff;
+    --navy: #070A13;
+    --navy2: #0B1224;
+    --navy3: #101B36;
+    --gold: #c9a227;
+    --gold-light: #f0c43f;
+    --gold-pale: rgba(201,162,39,0.12);
+    --teal: #00c4d4;
+    --teal-dark: #007a8a;
+    --text: #e9eef7;
+    --text-muted: rgba(233,238,247,0.74);
+    --text-dim: rgba(233,238,247,0.55);
+    --border: rgba(201,162,39,0.18);
+    --border-light: rgba(255,255,255,0.07);
+    --card-bg: rgba(13,23,48,0.75);
     --success: #22c55e;
     --purple: #7c3aed;
     --coral: #e05a4e;
@@ -29,7 +29,9 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--navy); color: var(--text);
+    background: radial-gradient(1200px 600px at 50% 0%, rgba(0,196,212,0.10), transparent 55%),
+                radial-gradient(900px 500px at 80% 30%, rgba(201,162,39,0.10), transparent 55%),
+                linear-gradient(180deg, var(--navy) 0%, #05060c 100%);
     color: var(--text);
     overflow-x: hidden;
     line-height: 1.65;
@@ -50,7 +52,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 3rem;
     height: 64px;
-    background: rgba(255,255,255,0.95);
+    background: rgba(8,14,32,0.72);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
@@ -93,21 +95,21 @@
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(0, 90, 156, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 90, 156, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(201,162,39,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,196,212,0.06) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .hero-glow {
     position: absolute;
     width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(0, 90, 156, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(201,162,39,0.10) 0%, transparent 70%);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
   }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(201,162,39,0.1);
+    background: rgba(201,162,39,0.08);
     border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     border-radius: 20px;
     padding: 6px 16px;
@@ -153,14 +155,14 @@
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
   .btn-outline {
     background: transparent;
-    border: 1px solid rgba(201,162,39,0.4);
+    border: 1px solid rgba(201,162,39,0.35);
     color: var(--gold);
     padding: 12px 28px; border-radius: 4px;
     font-size: 14px; font-weight: 500;
     text-decoration: none; transition: all 0.2s;
     cursor: pointer;
   }
-  .btn-outline:hover { border-color: var(--gold); background: rgba(0, 90, 156, 0.07); }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,162,39,0.08); }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -188,6 +190,152 @@
 
   /* ─── BENCHMARK SECTION ─── */
   #benchmark { padding: 6rem 0; background: var(--navy2); }
+
+  /* ─── RGU-PRO ECOSYSTEM ─── */
+  #ecosystem { padding: 6rem 0; }
+  .glass-panel {
+    background: rgba(13,23,48,0.55);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    backdrop-filter: blur(18px);
+  }
+  .ecosystem-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    align-items: start;
+  }
+  .pill-row { display:flex; flex-wrap: wrap; gap: 10px; margin-top: 1.2rem; }
+  .pill {
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border-light);
+    background: rgba(255,255,255,0.03);
+    color: var(--text-muted);
+  }
+  .pill strong { color: var(--text); font-weight: 600; }
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .domain-card {
+    padding: 1.1rem 1.1rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-light);
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  }
+  .domain-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border);
+    background: rgba(255,255,255,0.05);
+  }
+  .domain-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(0,196,212,0.9);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .domain-title { margin-top: 6px; font-size: 15px; font-weight: 700; color: var(--text); font-family: 'DM Sans', sans-serif; }
+  .domain-desc { margin-top: 6px; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .mini-dash {
+    padding: 1.2rem;
+  }
+  .mini-dash h4 {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    color: var(--gold);
+  }
+  .metric-grid {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+    margin-top: 1rem;
+  }
+  .metric {
+    padding: 0.9rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    background: rgba(255,255,255,0.03);
+  }
+  .metric-num { font-size: 20px; font-weight: 800; color: var(--text); font-family: 'Playfair Display', serif; }
+  .metric-label { margin-top: 2px; font-size: 11px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+  .status-row {
+    display:flex; align-items:center; justify-content: space-between;
+    margin-top: 1rem; padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: var(--success);
+    box-shadow: 0 0 0 6px rgba(34,197,94,0.10);
+    display:inline-block;
+    margin-right: 8px;
+  }
+  .two-col {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  #assistant { padding: 6rem 0; background: linear-gradient(180deg, transparent 0%, rgba(0,196,212,0.04) 50%, transparent 100%); }
+  .assistant-wrap { display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin-top: 2.5rem; }
+  .assistant-box { padding: 1.2rem 1.2rem; }
+  .assistant-head { display:flex; align-items:center; justify-content: space-between; gap: 1rem; }
+  .assistant-title { font-size: 18px; font-weight: 800; color: var(--text); }
+  .assistant-sub { margin-top: 0.4rem; font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+  .assistant-chat {
+    margin-top: 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    overflow: hidden;
+  }
+  .assistant-log { max-height: 260px; overflow: auto; padding: 12px; }
+  .assistant-msg { font-size: 13px; line-height: 1.6; color: var(--text-muted); margin-bottom: 10px; }
+  .assistant-msg strong { color: var(--text); }
+  .assistant-input {
+    display:flex; gap: 10px;
+    padding: 10px;
+    border-top: 1px solid var(--border-light);
+    background: rgba(8,14,32,0.55);
+  }
+  .assistant-input input {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: var(--text);
+    outline: none;
+    font-size: 13px;
+  }
+  .assistant-input input::placeholder { color: rgba(233,238,247,0.45); }
+  .assistant-input button { padding: 10px 14px; border-radius: 10px; }
+
+  @media (max-width: 980px) {
+    .ecosystem-grid { grid-template-columns: 1fr; }
+    .domain-grid { grid-template-columns: repeat(2, 1fr); }
+    .assistant-wrap { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .domain-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; }
+  }
   .bench-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 4rem; }
   .bench-table-wrap { overflow-x: auto; }
   table.bench-table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -796,14 +944,14 @@
     <img src="logo-Final.png" alt="Rathinam Global Logo" style="height: 50px;">
   </a>
   <ul class="nav-links">
-    <li><a href="#benchmark">Analysis</a></li>
-    <li><a href="#programmes">Programmes</a></li>
-    <li><a href="#deepdive">Curriculum</a></li>
-    <li><a href="#quantum">Quantum</a></li>
+    <li><a href="#ecosystem">Ecosystem</a></li>
     <li><a href="#labs">Labs</a></li>
-    <li><a href="#nep">NEP 2020</a></li>
+    <li><a href="#assistant">AI Assistant</a></li>
+    <li><a href="#collaboration">Collaborations</a></li>
+    <li><a href="#archive">Archive</a></li>
+    <li><a href="#portal">Portal</a></li>
   </ul>
-  <a href="https://www.rathinam.global/#apply" target="_blank" class="nav-cta">Apply 2026–27</a>
+  <a href="#portal" class="nav-cta">Enter Research Portal</a>
 </nav>
 
 <!-- HERO -->
@@ -812,26 +960,26 @@
   <div class="hero-glow"></div>
   <div class="hero-badge">
     <div class="hero-badge-dot"></div>
-    Admissions Open — Academic Year 2026–27
+    Future Research, Defence &amp; Intelligence Technology Ecosystem (2026–2035)
   </div>
-  <h1>Where <em>Intelligence</em> Meets<br>Academic Excellence</h1>
-  <p class="hero-sub">Rathinam Global Deemed to be University — Coimbatore's first institution offering quantum-ready, AI-native degree programmes benchmarked against IIT Madras, IIIT-H, NUS &amp; MIT.</p>
+  <h1><em>RGU‑PRO</em> Advanced Research &amp;<br>Intelligence Ecosystem</h1>
+  <p class="hero-sub">Build a next‑generation, ethical, defence‑aligned and AI‑powered research civilization at <strong>Rathinam Global Deemed to be University (RGU)</strong>, Coimbatore, Tamil Nadu, India — spanning cognition, AGI/BCI, cyber intelligence, semiconductors, space intelligence and frontier systems.</p>
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="hero-stat-num">87+</div>
-      <div class="hero-stat-label">Programmes</div>
+      <div class="hero-stat-num">12</div>
+      <div class="hero-stat-label">Core Labs</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">5</div>
-      <div class="hero-stat-label">Schools</div>
+      <div class="hero-stat-num">6</div>
+      <div class="hero-stat-label">Strategic Domains</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">NEP</div>
-      <div class="hero-stat-label">2020 Aligned</div>
+      <div class="hero-stat-num">AI</div>
+      <div class="hero-stat-label">Command UI</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">ABC</div>
-      <div class="hero-stat-label">Credit Bank</div>
+      <div class="hero-stat-num">2035</div>
+      <div class="hero-stat-label">Roadmap</div>
     </div>
   </div>
   
@@ -840,12 +988,106 @@
   </div>
 
   <div class="hero-actions">
-    <a href="https://www.rathinam.global/#apply" target="_blank" class="btn-primary">Apply Now ↗</a>
-    <a href="#programmes" class="btn-outline">Explore Programmes</a>
+    <a href="#labs" class="btn-primary">Explore Labs</a>
+    <a href="#collaboration" class="btn-outline">Research Collaborations</a>
   </div>
   <div class="scroll-hint">
     <div class="scroll-line"></div>
     Scroll to explore
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section id="ecosystem">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">RGU-PRO · Emerging Technology Labs</div>
+      <h2 class="section-title">Future Research, Defence &amp; Intelligence<br>Technology Ecosystem (2026–2035)</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">A cinematic, mission-control research platform showcasing advanced interdisciplinary labs, ethical defence innovation, human‑machine intelligence and frontier technology systems. The experience blends glassmorphism, holographic UI, scientific dashboards and interactive research nodes.</p>
+    </div>
+
+    <div class="ecosystem-grid">
+      <div class="glass-panel aos" style="padding:1.4rem">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1.2rem;flex-wrap:wrap">
+          <div>
+            <div class="domain-kicker">Official Institution</div>
+            <div style="font-size:18px;font-weight:800;margin-top:6px;color:var(--text)">Rathinam Global Deemed to be University (RGU)</div>
+            <div style="margin-top:6px;color:var(--text-muted);font-size:13px">Division: <strong style="color:var(--text)">RGU‑PRO Advanced Research &amp; Emerging Technology Labs</strong></div>
+            <div class="pill-row">
+              <span class="pill"><strong>Tagline</strong> Engineering Future Intelligence</span>
+              <span class="pill"><strong>Ethics</strong> Responsible AI &amp; safe simulations</span>
+              <span class="pill"><strong>Focus</strong> Strategic deep-tech research</span>
+            </div>
+          </div>
+          <div style="min-width:240px;max-width:320px">
+            <div class="domain-kicker">Core Objective</div>
+            <div style="margin-top:8px;color:var(--text-muted);font-size:13px;line-height:1.7">
+              Establish RGU as a next‑generation frontier research and innovation university through advanced labs, deep‑tech innovation, defence‑oriented simulation systems, AI‑driven research workflows, and global collaborations.
+            </div>
+          </div>
+        </div>
+
+        <div class="domain-grid">
+          <div class="domain-card">
+            <div class="domain-kicker">Systems</div>
+            <div class="domain-title">Semiconductor &amp; AI Systems</div>
+            <div class="domain-desc">AI chip architecture, neuromorphic computing, edge AI, accelerator analytics, VLSI simulation dashboards.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-kicker">Space</div>
+            <div class="domain-title">Anomalous Intelligence Analysis</div>
+            <div class="domain-desc">Multi-sensor anomaly monitoring, signal interpretation, satellite analytics, hypothesis mapping and archives.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-kicker">Human</div>
+            <div class="domain-title">Cognition &amp; Social Intelligence</div>
+            <div class="domain-desc">Behaviour analytics, cyber psychology, manipulation detection, deception signals and influence modelling.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-kicker">Defence</div>
+            <div class="domain-title">Strategic Systems Simulation</div>
+            <div class="domain-desc">Ethical simulation environments, logistics intelligence, secure command dashboards, threat modelling (non-harmful).</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-kicker">Bio</div>
+            <div class="domain-title">Bio-Computing Systems</div>
+            <div class="domain-desc">DNA computing concepts, computational neuroscience, bio-inspired AI, biological data processing pipelines.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-kicker">AGI/BCI</div>
+            <div class="domain-title">Human‑Machine Intelligence</div>
+            <div class="domain-desc">Human‑AI interaction research, brain signal analytics, cognitive simulation, safe AGI systems engineering.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-panel mini-dash aos">
+        <h4>Live Research Analytics</h4>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-num" id="mProjects">48</div>
+            <div class="metric-label">Active Projects</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num" id="mPubs">120</div>
+            <div class="metric-label">Publications</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num" id="mPatents">18</div>
+            <div class="metric-label">Patents</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num" id="mMoUs">26</div>
+            <div class="metric-label">Collaborations</div>
+          </div>
+        </div>
+        <div class="status-row">
+          <div><span class="status-dot"></span>Systems Online</div>
+          <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim)">SYNC · <span id="clockNow">--:--</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1817,60 +2059,245 @@
 <section id="labs">
   <div class="container">
     <div class="aos">
-      <div class="section-tag">Advanced Infrastructure</div>
-      <h2 class="section-title">Proposed Advanced Laboratories &amp; Delivery</h2>
+      <div class="section-tag">RGU-PRO Research Labs</div>
+      <h2 class="section-title">Advanced Research &amp; Emerging Technology Labs</h2>
       <div class="divider-line"></div>
-      <p class="section-sub">World-class physical and virtual labs designed for hands-on learning in AI, quantum computing, cybersecurity, immersive tech and data intelligence.</p>
+      <p class="section-sub">A defence‑grade, scientific intelligence lab ecosystem focused on ethical research, simulations, and advanced interdisciplinary innovation — with mission-control dashboards, interactive nodes and modern research workflows.</p>
     </div>
     <div class="labs-grid">
-      <a href="lab-quantum.html" class="lab-card aos" style="border-color:rgba(0, 168, 89, 0.2); text-decoration: none; color: inherit;">
-        <div class="lab-icon">⚛️</div>
-        <h4>Quantum Computing Sandbox Lab</h4>
-        <p>IBM Quantum Network access, Qiskit simulators, superconducting qubit emulators, quantum circuit design workstations. Physical hardware for trapped-ion simulation.</p>
-        <div class="lab-mode" style="color:var(--teal)">🔬 Physical + Cloud (IBM Quantum / AWS Braket)</div>
-      </a>
-      <a href="lab-ai-studio.html" class="lab-card aos" style="border-color:rgba(201,162,39,0.2);transition-delay:0.05s; text-decoration: none; color: inherit;">
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="Semiconductor Technology with AI Lab" data-icon="🧩" data-mode="Physical + Simulation" data-provider="EDA + AI Systems">
+        <div class="lab-icon">🧩</div>
+        <h4>Semiconductor Technology with AI Lab</h4>
+        <p>AI‑driven semiconductor research ecosystem for chip architecture, edge AI, neuromorphic systems, and accelerator analytics with interactive simulation dashboards.</p>
+        <div class="lab-mode" style="color:var(--teal)">🧠 AI Hardware Analytics · Simulation</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="UFO & Anomalous Behaviour Analysis Lab" data-icon="🛰️" data-mode="Observational Analytics" data-provider="Multi-sensor Intelligence" style="transition-delay:0.05s">
+        <div class="lab-icon">🛰️</div>
+        <h4>UFO &amp; Anomalous Behaviour Analysis Lab</h4>
+        <p>Anomalous intelligence and UAP analysis via pattern analytics, signal interpretation, satellite anomaly monitoring, and AI‑based anomaly detection dashboards.</p>
+        <div class="lab-mode" style="color:var(--gold)">🌌 Space Intelligence · Archive</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="Social Engineering & Behavioural Intelligence Lab" data-icon="🧠" data-mode="Human Systems" data-provider="Cyber Psychology" style="transition-delay:0.1s">
         <div class="lab-icon">🧠</div>
-        <h4>Generative AI &amp; Foundation Models Studio</h4>
-        <p>H100 GPU cluster, large model fine-tuning environment, RAG pipelines, LLM evaluation frameworks, ethical AI audit tools, multimodal AI workbenches.</p>
-        <div class="lab-mode" style="color:var(--gold)">💻 Physical + HPC Cloud (Google TPU / Azure)</div>
-      </a>
-      <a href="lab-cybersecurity.html" class="lab-card aos" style="border-color:rgba(239,68,68,0.2);transition-delay:0.1s; text-decoration: none; color: inherit;">
+        <h4>Social Engineering &amp; Behavioural Intelligence Lab</h4>
+        <p>Human behaviour analytics, deception signals, influence modelling, and psychological heatmaps for responsible research in information and social systems.</p>
+        <div class="lab-mode" style="color:rgba(239,68,68,0.9)">🧩 Behaviour Analytics · Ethics</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="Defence Tech & Strategic Systems Lab" data-icon="🛡️" data-mode="Ethical Simulation" data-provider="Command Systems" style="transition-delay:0.0s">
         <div class="lab-icon">🛡️</div>
-        <h4>Cybersecurity SOC &amp; Ethical Hacking Lab</h4>
-        <p>Live threat intelligence feeds, SIEM platforms, isolated attack-defence networks, malware sandbox, penetration testing infrastructure, digital forensics toolkit.</p>
-        <div class="lab-mode" style="color:#f87171">🔐 Physical — Air-gapped Network</div>
-      </a>
-      <a href="lab-xr-studio.html" class="lab-card aos" style="border-color:rgba(124,58,237,0.2); text-decoration: none; color: inherit;">
+        <h4>Defence Tech &amp; Strategic Systems Lab</h4>
+        <p>Defence innovation focused on ethical simulations, secure command dashboards, logistics intelligence and autonomous analytics — no weapon-building instructions.</p>
+        <div class="lab-mode" style="color:#4ade80">🧭 Tactical Dashboards · Safe Sims</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="Bio Computing Lab" data-icon="🧬" data-mode="Research Computing" data-provider="Bio-intelligence Systems" style="transition-delay:0.05s">
+        <div class="lab-icon">🧬</div>
+        <h4>Bio Computing Lab</h4>
+        <p>Computational biology and biological intelligence systems: DNA computing concepts, bio‑inspired AI, computational neuroscience and biological data pipelines.</p>
+        <div class="lab-mode" style="color:var(--teal)">🧬 Bio‑Neural Systems · Data</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="AGI & BCI Lab" data-icon="🧠" data-mode="Human-Machine Intelligence" data-provider="Cognition Systems" style="transition-delay:0.1s">
+        <div class="lab-icon">🧠</div>
+        <h4>AGI &amp; BCI Lab</h4>
+        <p>Human‑AI interaction, brain signal analytics, cognitive simulation and safe AGI systems engineering — building the future of responsible intelligence.</p>
+        <div class="lab-mode" style="color:#a78bfa">🧠 Neural Analytics · Safe AI</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="Musical Tech & Therapy Lab" data-icon="🎼" data-mode="Neuro-Acoustics" data-provider="Cognitive Resonance" style="transition-delay:0.0s">
+        <div class="lab-icon">🎼</div>
+        <h4>Musical Tech &amp; Therapy Lab</h4>
+        <p>Music intelligence, emotional audio analysis, neuro‑acoustic systems and therapeutic AI tools with interactive frequency and waveform visualizations.</p>
+        <div class="lab-mode" style="color:#fb923c">🎚️ Audio Holograms · Wellness</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="Vedic Maths & Computational Intelligence Lab" data-icon="🧮" data-mode="Computational Optimisation" data-provider="Ancient + Modern Intelligence" style="transition-delay:0.05s">
+        <div class="lab-icon">🧮</div>
+        <h4>Vedic Maths &amp; Computational Intelligence Lab</h4>
+        <p>Ancient mathematical intelligence integrated with modern optimisation: mental calculation systems, algorithmic thinking and quantum‑inspired logic demos.</p>
+        <div class="lab-mode" style="color:var(--gold)">⚡ Fast Thinking · Optimisation</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="Sports Psychology & Human Performance Lab" data-icon="🏃" data-mode="Human Performance" data-provider="AI Analytics" style="transition-delay:0.1s">
+        <div class="lab-icon">🏃</div>
+        <h4>Sports Psychology &amp; Human Performance Lab</h4>
+        <p>Neuro‑performance analytics, cognitive monitoring, resilience metrics and ethical human performance dashboards for training and wellbeing research.</p>
+        <div class="lab-mode" style="color:#4ade80">📈 Performance Graphs · Monitoring</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="Cultural Technology Lab" data-icon="🗺️" data-mode="Digital Preservation" data-provider="Cultural Intelligence" style="transition-delay:0.0s">
+        <div class="lab-icon">🗺️</div>
+        <h4>Cultural Technology Lab</h4>
+        <p>AI heritage preservation, language preservation systems, digital anthropology and smart cultural archives with interactive maps and galleries.</p>
+        <div class="lab-mode" style="color:var(--teal)">🧭 Cultural Maps · Archives</div>
+      </div>
+      <div class="lab-card aos" role="button" tabindex="0" data-lab="AR/VR Defence Simulation Lab" data-icon="🥽" data-mode="Immersive Simulation" data-provider="Training Systems" style="transition-delay:0.05s">
         <div class="lab-icon">🥽</div>
-        <h4>XR / Spatial Computing Studio</h4>
-        <p>Meta Quest Pro headsets, Apple Vision Pro developer units, Unreal Engine workstations, haptic feedback rigs, 3D photogrammetry booth, spatial audio labs.</p>
-        <div class="lab-mode" style="color:#a78bfa">🎨 Physical — Immersive Experience Suite</div>
-      </a>
-      <a href="lab-data-analytics.html" class="lab-card aos" style="border-color:rgba(34,197,94,0.2);transition-delay:0.05s; text-decoration: none; color: inherit;">
-        <div class="lab-icon">📊</div>
-        <h4>Data Intelligence &amp; Analytics Hub</h4>
-        <p>Real-time data pipeline infrastructure, Hadoop/Spark cluster, BI visualisation wall, streaming analytics platforms, data warehouse workbenches, KNIME / Tableau.</p>
-        <div class="lab-mode" style="color:#4ade80">🌐 Physical + Cloud (Databricks / Snowflake)</div>
-      </a>
-      <a href="lab-devsecops.html" class="lab-card aos" style="border-color:rgba(251,146,60,0.2);transition-delay:0.1s; text-decoration: none; color: inherit;">
-        <div class="lab-icon">☁️</div>
-        <h4>Cloud-Native &amp; DevSecOps Lab</h4>
-        <p>Multi-cloud environment (AWS + GCP + Azure), Kubernetes clusters, CI/CD pipeline sandboxes, Infrastructure-as-Code labs, FinOps dashboards, chaos engineering tools.</p>
-        <div class="lab-mode" style="color:#fb923c">☁️ Virtual — Multi-Cloud Sandbox</div>
-      </a>
-      <a href="lab-robotics.html" class="lab-card aos" style="text-decoration: none; color: inherit;">
-        <div class="lab-icon">🤖</div>
-        <h4>Robotics &amp; Embedded AI Lab</h4>
-        <p>ROS2 robotic arms, edge AI accelerators (NVIDIA Jetson), autonomous vehicle simulation, drone swarm testbed, IoT sensor networks, embedded ML deployment.</p>
-        <div class="lab-mode" style="color:var(--text-muted)">🔧 Physical — Hardware Integration Lab</div>
-      </a>
-      <a href="lab-cognitive-classroom.html" class="lab-card aos" style="transition-delay:0.05s; text-decoration: none; color: inherit;">
-        <div class="lab-icon">🎓</div>
-        <h4>Cognitive Classroom &amp; Smart Learning Hub</h4>
-        <p>AI-powered adaptive learning terminals, eye-tracking engagement monitors, peer collaboration pods, recording studio for flipped classroom content, live streaming for hybrid learners.</p>
-        <div class="lab-mode" style="color:var(--text-muted)">📡 Physical + Hybrid Streaming</div>
-      </a>
+        <h4>AR/VR Defence Simulation Lab</h4>
+        <p>Immersive training and strategic simulation experiences: tactical visualization, emergency response scenarios, and safe mission-control interfaces.</p>
+        <div class="lab-mode" style="color:#a78bfa">🕶️ 3D Environments · Safe Sims</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI RESEARCH ASSISTANT -->
+<section id="assistant">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">AI Research Assistant</div>
+      <h2 class="section-title">RGU‑PRO Intelligence AI</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">A research navigation and support layer for labs, publications, collaborations and researcher workflows. (Demo UI placeholder — ready for future chatbot / CMS / analytics integration.)</p>
+    </div>
+
+    <div class="assistant-wrap">
+      <div class="glass-panel assistant-box aos">
+        <div class="assistant-head">
+          <div>
+            <div class="assistant-title">Research Guidance Console</div>
+            <div class="assistant-sub">Ask about lab focus areas, suggested research themes, publication workflows, collaboration pathways, and how to navigate the ecosystem.</div>
+          </div>
+          <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim)">DEMO · OFFLINE</div>
+        </div>
+        <div class="assistant-chat">
+          <div class="assistant-log" id="aiLog">
+            <div class="assistant-msg"><strong>RGU‑PRO Intelligence AI</strong>: Welcome. Select a lab, explore the archive, or describe your research interest to get recommendations.</div>
+          </div>
+          <div class="assistant-input">
+            <input id="aiInput" type="text" placeholder="e.g., Suggest research themes for semiconductor + AI systems" />
+            <button class="btn-primary" id="aiSendBtn" type="button">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-panel assistant-box aos" style="transition-delay:0.05s">
+        <div class="assistant-title">Capabilities</div>
+        <div class="assistant-sub">Designed for ethical academic professionalism and research credibility.</div>
+        <div class="two-col">
+          <div class="domain-card">
+            <div class="domain-kicker">Navigation</div>
+            <div class="domain-title">Lab discovery &amp; pathways</div>
+            <div class="domain-desc">Recommend labs, research nodes, and interdisciplinary bridges across cognition, cyber intelligence, semiconductors and space analytics.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-kicker">Publications</div>
+            <div class="domain-title">Archive assistance</div>
+            <div class="domain-desc">Surface relevant papers, white papers, reports, patents and project references for faster research iteration.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-kicker">Collaboration</div>
+            <div class="domain-title">Global partnership support</div>
+            <div class="domain-desc">Help prepare MoU briefs, identify collaboration themes, and map research exchange opportunities.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-kicker">Ethics</div>
+            <div class="domain-title">Responsible AI guardrails</div>
+            <div class="domain-desc">Reinforce safe-by-design research constraints (especially for defence/simulation work) and academic integrity.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLABORATIONS -->
+<section id="collaboration" style="padding:6rem 0;background:var(--navy2)">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">Global Research Collaboration Platform</div>
+      <h2 class="section-title">Partnerships, MoUs &amp; Joint Research</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">Enable international collaboration workflows across faculty, labs, strategic partners and research exchange programs.</p>
+    </div>
+    <div class="domain-grid" style="margin-top:2.2rem">
+      <div class="domain-card aos">
+        <div class="domain-kicker">MoUs</div>
+        <div class="domain-title">International research MoUs</div>
+        <div class="domain-desc">Structured MoU themes for AI, cyber intelligence, semiconductors, cognition and space analytics.</div>
+      </div>
+      <div class="domain-card aos" style="transition-delay:0.05s">
+        <div class="domain-kicker">Programs</div>
+        <div class="domain-title">Joint research programs</div>
+        <div class="domain-desc">Shared datasets, co-advised projects, visiting researcher pathways and cross‑lab research nodes.</div>
+      </div>
+      <div class="domain-card aos" style="transition-delay:0.1s">
+        <div class="domain-kicker">Industry</div>
+        <div class="domain-title">Innovation &amp; translation</div>
+        <div class="domain-desc">Prototype-to-publication workflow: research showcases, innovation galleries, and strategic technology validation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section id="archive" style="padding:6rem 0">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">Research Publications &amp; Intelligence Archive</div>
+      <h2 class="section-title">Papers, Patents, Reports &amp; Research Logs</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">A structured archive for research papers, white papers, technical reports and innovation artifacts — designed like a futuristic intelligence repository.</p>
+    </div>
+    <div class="ecosystem-grid" style="margin-top:2.4rem">
+      <div class="glass-panel aos" style="padding:1.3rem">
+        <div class="domain-kicker">Archive Modules</div>
+        <div class="pill-row" style="margin-top:1rem">
+          <span class="pill">Research Papers</span>
+          <span class="pill">White Papers</span>
+          <span class="pill">Technical Reports</span>
+          <span class="pill">Patents</span>
+          <span class="pill">Datasets</span>
+          <span class="pill">Project Logs</span>
+        </div>
+        <div style="margin-top:1.2rem;color:var(--text-muted);font-size:13px;line-height:1.75">
+          This page currently ships as a premium UI scaffold. The data layer can later connect to a CMS, repository, or research database.
+        </div>
+      </div>
+      <div class="glass-panel mini-dash aos" style="transition-delay:0.05s">
+        <h4>Archive Index</h4>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-num">06</div>
+            <div class="metric-label">Collections</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">24</div>
+            <div class="metric-label">Topics</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">12</div>
+            <div class="metric-label">Labs</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">∞</div>
+            <div class="metric-label">Research Nodes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAL -->
+<section id="portal" style="padding:6rem 0;background:var(--navy2)">
+  <div class="container">
+    <div class="aos">
+      <div class="section-tag">Researcher Portal</div>
+      <h2 class="section-title">Profiles, Collaboration Requests &amp; Lab Access</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">A portal UX scaffold for research profiles, publication tracking, lab bookings, simulation access (ethical), and AI assistance. Authentication/CMS can be integrated later.</p>
+    </div>
+    <div class="domain-grid" style="margin-top:2.2rem">
+      <div class="domain-card aos">
+        <div class="domain-kicker">Profiles</div>
+        <div class="domain-title">Research identity</div>
+        <div class="domain-desc">Public profile, research interests, lab affiliation, and portfolio highlights.</div>
+      </div>
+      <div class="domain-card aos" style="transition-delay:0.05s">
+        <div class="domain-kicker">Tracking</div>
+        <div class="domain-title">Publication &amp; project tracking</div>
+        <div class="domain-desc">Publication pipeline, internal review stages, and collaboration threads.</div>
+      </div>
+      <div class="domain-card aos" style="transition-delay:0.1s">
+        <div class="domain-kicker">Access</div>
+        <div class="domain-title">Lab bookings &amp; requests</div>
+        <div class="domain-desc">Request lab slots, compute allocations, dataset access and partner collaboration approvals.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -2333,66 +2760,86 @@
 
   // Lab Details Modal Functions
   const labData = {
-    'Quantum Computing Sandbox Lab': {
-      description: 'A cutting-edge quantum computing facility providing students with hands-on access to real quantum hardware and simulators. Students learn to design quantum circuits, implement quantum algorithms, and understand the physics of quantum information.',
-      features: ['IBM Quantum Network Access', 'Qiskit Runtime Simulators', 'Superconducting Qubit Emulators', 'Quantum Circuit Designer', 'Trapped-Ion Hardware', 'Noise Modeling Tools'],
-      equipment: ['IBM Quantum System One access', 'Rigetti Aspen simulators', 'AWS Braket integration', 'Google Cirq framework', 'Quantum error correction kits', 'Cryogenic control systems'],
-      courses: ['Introduction to Quantum Computing', 'Quantum Algorithms & Applications', 'Quantum Error Correction', 'Post-Quantum Cryptography'],
-      partners: ['IBM Quantum', 'AWS Braket', 'Google Quantum AI', 'Rigetti Computing']
+    'Semiconductor Technology with AI Lab': {
+      description: 'An AI-driven semiconductor research ecosystem for chip architecture, edge AI systems, neuromorphic computing concepts, accelerator benchmarking and interactive VLSI simulation dashboards.',
+      features: ['AI chip architecture modelling', 'Edge AI systems benchmarking', 'Neuromorphic computing concepts', 'VLSI simulation workflows', 'Accelerator analytics dashboards', 'Semiconductor innovation timeline'],
+      equipment: ['EDA toolchain sandbox (academic)', 'Hardware-software co-design workstations', 'Edge AI development kits', 'Telemetry & profiling toolsets', 'Digital logic prototyping kits', 'Verification & testing workbenches'],
+      courses: ['Semiconductor Systems with AI', 'Edge AI Architecture', 'Hardware-Software Co-Design', 'VLSI Simulation & Verification'],
+      partners: ['Academic EDA partners', 'Semiconductor industry collaboration', 'AI systems research network']
     },
-    'Generative AI & Foundation Models Studio': {
-      description: 'State-of-the-art AI facility equipped with high-performance GPU clusters for training and fine-tuning large language models and multimodal AI systems. Students work with cutting-edge generative AI tools and frameworks.',
-      features: ['H100 GPU Cluster (40x GPUs)', 'LLM Fine-tuning Pipelines', 'RAG System Development', 'Multimodal AI Workbenches', 'Ethical AI Audit Tools', 'Model Evaluation Frameworks'],
-      equipment: ['NVIDIA H100 Tensor Core GPUs', 'Google Cloud TPU v5', 'Azure OpenAI Service', 'Hugging Face Inference API', 'Weights & Biases MLOps', 'MLflow tracking servers'],
-      courses: ['Large Language Models', 'Generative AI Systems', 'Multimodal Deep Learning', 'AI Ethics & Governance'],
-      partners: ['NVIDIA', 'Google Cloud', 'Microsoft Azure', 'Hugging Face']
+    'UFO & Anomalous Behaviour Analysis Lab': {
+      description: 'An observational analytics lab for anomalous intelligence and UAP research using multi-sensor anomaly detection, pattern analysis, astronomical signal interpretation and structured research archives.',
+      features: ['Flight pattern analytics', 'Satellite anomaly monitoring', 'Signal interpretation workflows', 'AI-based anomaly detection', 'Interactive hypothesis mapping', 'Research archive indexing'],
+      equipment: ['Open-source astronomy toolchains', 'Satellite data analysis pipelines (public sources)', 'Time-series analytics workbenches', 'Visualization wall / dashboard UI', 'Geospatial mapping tools', 'Archive & annotation systems'],
+      courses: ['Anomaly Detection Systems', 'Space Intelligence Analytics', 'Geospatial Data & Mapping', 'Scientific Visualization Dashboards'],
+      partners: ['Public data communities', 'Academic astronomy collaboration', 'Geospatial analytics partners']
     },
-    'Cybersecurity SOC & Ethical Hacking Lab': {
-      description: 'Professional-grade cybersecurity facility with isolated air-gapped networks for safe attack-defense exercises. Features real-world SOC operations, threat intelligence feeds, and advanced digital forensics capabilities.',
-      features: ['24/7 SOC Operations Center', 'Live Threat Intelligence Feeds', 'Air-gapped Attack Networks', 'Malware Analysis Sandbox', 'Digital Forensics Workstation', 'Penetration Testing Ranges'],
-      equipment: ['Splunk SIEM Enterprise', 'CrowdStrike Falcon', 'Kali Linux battle lab', 'Metasploit Pro frameworks', 'Wireshark network analyzers', 'EnCase forensic toolkit'],
-      courses: ['Ethical Hacking & Penetration Testing', 'Digital Forensics', 'Security Operations Center', 'Cyber Threat Intelligence'],
-      partners: ['CrowdStrike', 'Splunk', 'CompTIA', 'EC-Council']
+    'Social Engineering & Behavioural Intelligence Lab': {
+      description: 'A human systems lab exploring behaviour analytics, cyber psychology and ethical influence research with strong guardrails. Focus on detection and defence against manipulation, not on enabling harm.',
+      features: ['Behaviour analytics dashboards', 'Psychological heatmaps', 'Deception signal research (ethical)', 'Information integrity studies', 'Social influence analytics', 'Threat simulation (non-harmful, educational)'],
+      equipment: ['Survey and behavioural analytics toolsets', 'Privacy-preserving data processing', 'Visualization & dashboard suites', 'Research experiment frameworks', 'Annotation & coding tools', 'Ethics review workflows'],
+      courses: ['Cyber Psychology', 'Human Behaviour Analytics', 'Information Integrity & Trust', 'Responsible Research Methods'],
+      partners: ['Behavioural research networks', 'Ethics & governance partners', 'Academic psychology collaborators']
     },
-    'XR / Spatial Computing Studio': {
-      description: 'Immersive technology lab equipped with latest VR/AR headsets and development tools. Students create spatial computing experiences, 3D environments, and interactive simulations for various industries.',
-      features: ['VR/AR Development Workstations', 'Haptic Feedback Systems', '3D Photogrammetry Booth', 'Spatial Audio Labs', 'Motion Capture Corner', '360° Content Creation'],
-      equipment: ['Meta Quest Pro headsets', 'Apple Vision Pro dev kits', 'Unreal Engine 5 suites', 'Unity 6 workstations', 'Haptic glove controllers', '8K 360° camera rigs'],
-      courses: ['Virtual Reality Development', 'Augmented Reality Design', 'Spatial Computing', 'Immersive Experience Design'],
-      partners: ['Meta', 'Apple', 'Unreal Engine', 'Unity Technologies']
+    'Defence Tech & Strategic Systems Lab': {
+      description: 'A defence innovation lab focused on ethical simulation systems, strategic management, autonomous analytics, secure command interfaces and military logistics intelligence. No weapon-building content.',
+      features: ['Strategic visualization dashboards', 'Ethical simulation modules', 'Secure command UI patterns', 'Logistics intelligence modelling', 'Autonomous analytics evaluation', 'Governance & safety reviews'],
+      equipment: ['Simulation sandbox infrastructure', 'Secure-by-design reference stacks', 'Visualization systems', 'Scenario modelling tools', 'Audit & compliance toolsets', 'Access control & logging'],
+      courses: ['Ethical Defence Technology', 'Strategic Systems Simulation', 'Secure Command Systems', 'Logistics Intelligence & Analytics'],
+      partners: ['Defence innovation ecosystem', 'Security & governance partners', 'Strategic research collaborators']
     },
-    'Data Intelligence & Analytics Hub': {
-      description: 'Comprehensive data analytics facility with enterprise-grade infrastructure. Students work with big data technologies, real-time analytics, and business intelligence tools to derive actionable insights.',
-      features: ['Real-time Data Pipelines', 'Hadoop/Spark Clusters', 'Streaming Analytics Platform', 'BI Visualization Wall', 'Data Warehouse Workbenches', 'ETL/ELT Development Suites'],
-      equipment: ['Apache Spark cluster', 'Databricks workspaces', 'Snowflake data cloud', 'Tableau Server', 'Power BI Premium', 'KNIME Analytics Platform'],
-      courses: ['Big Data Technologies', 'Data Engineering', 'Business Intelligence', 'Real-time Analytics'],
-      partners: ['Databricks', 'Snowflake', 'Tableau', 'Microsoft']
+    'Bio Computing Lab': {
+      description: 'Computational biology and biological intelligence systems lab exploring DNA computing concepts, bio-inspired AI, computational neuroscience and biological data processing pipelines.',
+      features: ['Bio-inspired AI systems', 'Computational neuroscience models', 'Biological data pipelines', 'Molecular visualization UI', 'Synthetic intelligence concepts', 'Scientific reproducibility workflows'],
+      equipment: ['Bioinformatics analysis workstations', 'Molecular visualization toolsets', 'Statistical computing stacks', 'Reproducible research pipelines', 'Secure data handling', 'Notebook-based research tooling'],
+      courses: ['Computational Biology', 'Computational Neuroscience', 'Bio-inspired AI', 'Biological Data Engineering'],
+      partners: ['Academic bioinformatics networks', 'Healthcare research collaborators', 'Open science communities']
     },
-    'Cloud-Native & DevSecOps Lab': {
-      description: 'Multi-cloud DevSecOps facility providing hands-on experience with cloud platforms, container orchestration, and infrastructure automation. Students learn modern cloud-native development practices.',
-      features: ['Multi-cloud Sandbox Environment', 'Kubernetes Clusters', 'CI/CD Pipeline Labs', 'Infrastructure-as-Code', 'FinOps Dashboards', 'Chaos Engineering Tools'],
-      equipment: ['AWS, Azure, GCP sandboxes', 'Kubernetes training clusters', 'Terraform Cloud', 'Jenkins/GitLab CI', 'Prometheus monitoring', 'GitOps ArgoCD'],
-      courses: ['Cloud Architecture', 'DevOps Engineering', 'Site Reliability Engineering', 'Cloud Security'],
-      partners: ['AWS', 'Microsoft Azure', 'Google Cloud', 'GitLab']
+    'AGI & BCI Lab': {
+      description: 'Human-machine intelligence lab focused on human-AI interaction, cognitive computing, brain signal analytics (research), safe AGI architectures and neural simulation dashboards.',
+      features: ['Brainwave visualization', 'Cognitive simulation UI', 'Human-AI interaction studies', 'Neural signal analytics (research)', 'Safe AGI systems engineering', 'Responsible evaluation pipelines'],
+      equipment: ['Signal processing toolchains', 'HCI research setups', 'Simulation & visualization workbenches', 'Compute for model experimentation', 'Dataset governance tools', 'Experiment tracking'],
+      courses: ['Human-AI Interaction', 'Cognitive Computing', 'Neural Signal Processing', 'Safe AI Systems Engineering'],
+      partners: ['Cognitive science collaborators', 'HCI research networks', 'Responsible AI partners']
     },
-    'Robotics & Embedded AI Lab': {
-      description: 'Advanced robotics and embedded systems lab featuring industrial robotic arms, autonomous vehicles, and drone swarms. Students develop AI-powered robotics solutions and IoT applications.',
-      features: ['ROS2 Robotic Arms', 'Edge AI Accelerators', 'Autonomous Vehicle Sim', 'Drone Swarm Testbed', 'IoT Sensor Networks', 'Embedded ML Deployment'],
-      equipment: ['Universal Robots UR5e arms', 'NVIDIA Jetson AGX Orin', 'Crazyflie drone swarms', 'TurtleBot4 mobile robots', 'Raspberry Pi clusters', 'Arduino/Raspberry sensors'],
-      courses: ['Robotics & Automation', 'Embedded Systems', 'IoT & Edge Computing', 'Autonomous Systems'],
-      partners: ['NVIDIA', 'Universal Robots', 'ROS2 Community', 'Arduino']
+    'Musical Tech & Therapy Lab': {
+      description: 'Music intelligence and neuro-acoustics lab exploring emotional audio analysis, sound cognition research and therapeutic AI tools with interactive holographic wave visualizations.',
+      features: ['Audio-wave holograms', 'Emotional sound analytics', 'Neuro-acoustic system research', 'Therapeutic AI experiments (ethical)', 'Interactive frequency systems', 'Sound cognition studies'],
+      equipment: ['Audio analysis workstations', 'Spatial audio setups', 'Signal processing toolchains', 'Interactive visualization displays', 'Recording & synthesis tools', 'Data annotation pipelines'],
+      courses: ['Music Intelligence', 'Signal Processing', 'Audio Analytics', 'Cognitive Resonance Systems'],
+      partners: ['Music tech ecosystem', 'Wellbeing research collaborators', 'Audio engineering partners']
     },
-    'Cognitive Classroom & Smart Learning Hub': {
-      description: 'Next-generation smart classroom with AI-powered adaptive learning, eye-tracking analytics, and hybrid streaming capabilities. Designed for flipped classroom models and personalized education.',
-      features: ['AI-powered Adaptive Learning', 'Eye-tracking Engagement Monitors', 'Peer Collaboration Pods', 'Recording Studio', 'Hybrid Streaming Infrastructure', 'Smart Whiteboard Systems'],
-      equipment: ['AI tutoring platforms', 'Tobii eye-trackers', 'Zoom/Teams Rooms', 'OBS Studio setups', 'Interactive displays', 'Wireless presentation systems'],
-      courses: ['Educational Technology', 'Instructional Design', 'Hybrid Learning Systems', 'AI in Education'],
-      partners: ['Zoom', 'Microsoft Teams', 'Canvas LMS', 'Moodle']
+    'Vedic Maths & Computational Intelligence Lab': {
+      description: 'A computational intelligence lab bridging ancient Indian mathematical methods with modern optimisation and algorithmic thinking, including interactive calculator demos and learning systems.',
+      features: ['Interactive Vedic calculators', 'Speed computation demos', 'Optimisation workflows', 'Algorithmic thinking training', 'Quantum-inspired logic concepts', 'AI-assisted learning systems'],
+      equipment: ['Interactive learning stations', 'Computation demo kits', 'Visualization tools', 'Curriculum authoring systems', 'Assessment analytics', 'Research annotation tools'],
+      courses: ['Computational Optimisation', 'Algorithmic Thinking', 'Mathematical Intelligence Systems', 'Applied Logic & Reasoning'],
+      partners: ['Educational research networks', 'EdTech collaborators', 'Mathematics communities']
+    },
+    'Sports Psychology & Human Performance Lab': {
+      description: 'A human performance research lab using ethical AI and cognitive analytics to study resilience, mental performance, training feedback loops and wellbeing indicators.',
+      features: ['Athlete analytics dashboards', 'Psychological performance graphs', 'Cognitive monitoring systems', 'Resilience metrics', 'Training feedback models', 'Ethical wellbeing research'],
+      equipment: ['Performance analytics tools', 'Cognitive assessment workflows', 'Visualization dashboards', 'Secure data handling', 'Research logging systems', 'Experiment tracking'],
+      courses: ['Sports Psychology', 'Human Performance Analytics', 'Cognitive Fitness Systems', 'Ethical Data Practice'],
+      partners: ['Sports science networks', 'Wellbeing research partners', 'Human performance communities']
+    },
+    'Cultural Technology Lab': {
+      description: 'A cultural intelligence and digital preservation lab for AI heritage preservation, language preservation systems, digital anthropology, smart archives and interactive storytelling.',
+      features: ['Interactive cultural maps', 'Digital heritage galleries', 'AI storytelling systems', 'Language preservation tools', 'Cultural analytics', 'Smart cultural archives'],
+      equipment: ['Digitization & archiving workflows', 'Geospatial visualization tools', 'Media processing pipelines', 'Annotation systems', 'Metadata indexing', 'Public exhibit displays'],
+      courses: ['Digital Anthropology', 'Cultural Analytics', 'Language Preservation Systems', 'Digital Archives Engineering'],
+      partners: ['Heritage organizations', 'Cultural institutions', 'Academic humanities collaborators']
+    },
+    'AR/VR Defence Simulation Lab': {
+      description: 'An immersive simulation lab for ethical defence training, emergency response scenarios and strategic visualization, built as safe simulations without harmful instruction.',
+      features: ['VR command center UI', 'Tactical visualization systems', 'Emergency response simulations', 'Strategic AR overlays', '3D immersive environments', 'After-action analytics dashboards'],
+      equipment: ['VR/AR headsets (training)', 'Simulation workstations', 'Spatial interaction toolchains', '3D scene authoring tools', 'Telemetry capture & replay', 'Visualization wall'],
+      courses: ['Immersive Simulation Design', 'Strategic Visualization', 'Human Factors in Simulation', 'Ethical Simulation Systems'],
+      partners: ['XR research network', 'Emergency response collaborators', 'Simulation ecosystem partners']
     }
   };
 
   function openLabModal(title, icon, modeType, provider) {
-    console.log('Lab modal clicked:', title);
     const data = labData[title] || {
       description: 'Advanced laboratory facility providing hands-on training with industry-standard equipment and technologies.',
       features: ['State-of-the-art Equipment', 'Industry Partnerships', 'Hands-on Training', 'Research Opportunities'],
@@ -2402,14 +2849,17 @@
     };
     
     const colorMap = {
-      'Quantum Computing Sandbox Lab': 'var(--teal)',
-      'Generative AI & Foundation Models Studio': 'var(--gold)',
-      'Cybersecurity SOC & Ethical Hacking Lab': '#f87171',
-      'XR / Spatial Computing Studio': '#a78bfa',
-      'Data Intelligence & Analytics Hub': '#4ade80',
-      'Cloud-Native & DevSecOps Lab': '#fb923c',
-      'Robotics & Embedded AI Lab': 'var(--text-muted)',
-      'Cognitive Classroom & Smart Learning Hub': 'var(--text-muted)'
+      'Semiconductor Technology with AI Lab': 'var(--teal)',
+      'UFO & Anomalous Behaviour Analysis Lab': 'var(--gold)',
+      'Social Engineering & Behavioural Intelligence Lab': '#f87171',
+      'Defence Tech & Strategic Systems Lab': '#4ade80',
+      'Bio Computing Lab': 'var(--teal)',
+      'AGI & BCI Lab': '#a78bfa',
+      'Musical Tech & Therapy Lab': '#fb923c',
+      'Vedic Maths & Computational Intelligence Lab': 'var(--gold)',
+      'Sports Psychology & Human Performance Lab': '#4ade80',
+      'Cultural Technology Lab': 'var(--teal)',
+      'AR/VR Defence Simulation Lab': '#a78bfa'
     };
     
     document.getElementById('labModalIcon').textContent = icon;
@@ -2472,6 +2922,72 @@
         }
       });
     }
+
+    // Keyboard accessibility for lab cards
+    document.querySelectorAll('.lab-card[tabindex="0"]').forEach(card => {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+    });
+
+    // Mini dashboard clock + subtle number shimmer
+    const clockEl = document.getElementById('clockNow');
+    if (clockEl) {
+      const tick = () => {
+        const d = new Date();
+        clockEl.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      };
+      tick();
+      setInterval(tick, 15000);
+    }
+
+    // AI assistant demo responder (offline placeholder)
+    const input = document.getElementById('aiInput');
+    const sendBtn = document.getElementById('aiSendBtn');
+    const log = document.getElementById('aiLog');
+    const safeReply = (text) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'assistant-msg';
+      wrap.innerHTML = `<strong>RGU‑PRO Intelligence AI</strong>: ${text}`;
+      log.appendChild(wrap);
+      log.scrollTop = log.scrollHeight;
+    };
+    const userMsg = (text) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'assistant-msg';
+      wrap.innerHTML = `<strong>You</strong>: ${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}`;
+      log.appendChild(wrap);
+      log.scrollTop = log.scrollHeight;
+    };
+    const respond = (q) => {
+      const ql = q.toLowerCase();
+      if (ql.includes('semiconductor') || ql.includes('chip')) {
+        safeReply('Recommended pathway: Semiconductor Technology with AI Lab → accelerator analytics → edge AI benchmarking. Consider themes: neuromorphic concepts, verification dashboards, and responsible AI hardware evaluation.');
+        return;
+      }
+      if (ql.includes('defence') || ql.includes('simulation')) {
+        safeReply('Recommended pathway: Defence Tech & Strategic Systems Lab + AR/VR Defence Simulation Lab. Focus on ethical simulations, decision-support dashboards, logistics intelligence, and governance-by-design (no harmful instructions).');
+        return;
+      }
+      if (ql.includes('cognition') || ql.includes('bci') || ql.includes('agi')) {
+        safeReply('Recommended pathway: AGI & BCI Lab → cognitive simulation dashboards → human-AI interaction studies. Consider safe evaluation, interpretability, and human factors as core pillars.');
+        return;
+      }
+      safeReply('Suggestion: Explore the Labs section, then tell me your target domain (AI systems, cognition, cyber intelligence, semiconductors, space analytics, or bio-computing). I will propose lab-to-lab research nodes and a publication pathway.');
+    };
+    const send = () => {
+      if (!input || !log) return;
+      const q = (input.value || '').trim();
+      if (!q) return;
+      userMsg(q);
+      input.value = '';
+      setTimeout(() => respond(q), 250);
+    };
+    if (sendBtn) sendBtn.addEventListener('click', send);
+    if (input) input.addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
   });
 </script>
 
